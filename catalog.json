@@ -961,13 +961,6 @@
       "description": "Programming languages, support components, coordination models, and fundamental algorithms for distributed and clustered systems."
     },
     {
-      "code": "CSE 5306",
-      "title": "",
-      "credits": null,
-      "prereqs": [],
-      "description": ""
-    },
-    {
       "code": "CSE 5354",
       "title": "REAL-TIME OPERATING SYSTEMS",
       "credits": 3,

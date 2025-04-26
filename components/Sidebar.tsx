@@ -1,44 +1,92 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import catalog from "@/catalog.json";
-import { Course } from "@/types/course";
+import { useDraggable } from "@dnd-kit/core";
 import { Input } from "@/components/ui/input";
 import { GripHorizontal } from "lucide-react";
+import { Course } from "@/types/course";
 
-export function Sidebar() {
+// Extend Course with a unique ID
+export interface CourseWithUid extends Course {
+  uid: string;
+}
+
+interface DraggableCourseProps {
+  course: CourseWithUid;
+}
+
+function DraggableCourse({ course }: DraggableCourseProps) {
+  // always call the hook:
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({ id: course.uid });
+
+  // strip out the dynamic aria-describedby
+  const { "aria-describedby": _ignored, ...cleanAttrs } = attributes;
+
+  const style = transform
+    ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        zIndex: 999,
+      }
+    : undefined;
+
+  return (
+    <li
+      ref={setNodeRef}
+      style={style}
+      {...cleanAttrs}
+      {...listeners}
+      className="group"
+    >
+      <div
+        className={`
+          flex items-center gap-3 p-3 rounded-lg border
+          bg-white text-gray-800 shadow-sm hover:shadow-md
+          transition-shadow cursor-grab
+          ${isDragging ? "opacity-75" : "opacity-100"}
+        `}
+      >
+        <GripHorizontal className="w-5 h-5 text-orange-500 opacity-50 group-hover:opacity-80" />
+        <div>
+          <div className="font-semibold text-orange-600">{course.code}</div>
+          <div className="text-sm text-gray-600">{course.title}</div>
+        </div>
+      </div>
+    </li>
+  );
+}
+
+export function Sidebar({ courses }: { courses: CourseWithUid[] }) {
   const [query, setQuery] = useState("");
-  const courses = catalog as Course[];
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) {
-      return Array.from(new Map(courses.map((c) => [c.code, c])).values());
-    }
-    const exactCode: Course[] = [];
-    const exactTitle: Course[] = [];
-    const partial: Course[] = [];
+    if (!q) return courses;
+
+    const exactCode: CourseWithUid[] = [];
+    const exactTitle: CourseWithUid[] = [];
+    const partial: CourseWithUid[] = [];
     const seen = new Set<string>();
 
     for (const c of courses) {
-      const codeL = c.code.toLowerCase();
-      if (!seen.has(c.code) && codeL.startsWith(q)) {
+      if (!seen.has(c.uid) && c.code.toLowerCase().startsWith(q)) {
         exactCode.push(c);
-        seen.add(c.code);
+        seen.add(c.uid);
       }
     }
     for (const c of courses) {
-      const titleL = c.title.toLowerCase();
-      if (!seen.has(c.code) && titleL.startsWith(q)) {
+      if (!seen.has(c.uid) && c.title.toLowerCase().startsWith(q)) {
         exactTitle.push(c);
-        seen.add(c.code);
+        seen.add(c.uid);
       }
     }
     for (const c of courses) {
-      const hay = (c.code + " " + c.title).toLowerCase();
-      if (!seen.has(c.code) && hay.includes(q)) {
+      if (
+        !seen.has(c.uid) &&
+        (c.code + " " + c.title).toLowerCase().includes(q)
+      ) {
         partial.push(c);
-        seen.add(c.code);
+        seen.add(c.uid);
       }
     }
 
@@ -46,37 +94,18 @@ export function Sidebar() {
   }, [query, courses]);
 
   return (
-    <div className="flex flex-col h-full bg-primary-50">
-      {/* Sticky Search */}
-      <div className="sticky top-0 bg-primary-50 p-4 z-10 border-b border-primary-200">
+    <div className="flex flex-col h-full bg-orange-50">
+      <div className="sticky top-0 bg-orange-50 p-4 border-b border-orange-200 z-10">
         <Input
           placeholder="🔍 Search courses…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full border-primary-300 focus:border-primary focus:ring-primary/40"
+          className="w-full border-orange-300 focus:border-orange-500 focus:ring-orange-300"
         />
       </div>
-
-      {/* Course List */}
-      <ul className="overflow-auto flex-1 p-4 space-y-3">
+      <ul className="flex-1 overflow-auto p-4 space-y-3">
         {filtered.map((course) => (
-          <li
-            key={course.code}
-            draggable
-            data-course={course.code}
-            className="group"
-          >
-            <div className="flex items-center gap-3 p-3 bg-white border border-primary-200 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-grab">
-              {/* Drag Handle */}
-              <GripHorizontal className="text-primary opacity-50 group-hover:opacity-80 w-5 h-5" />
-
-              {/* Course Info */}
-              <div>
-                <div className="font-semibold text-primary">{course.code}</div>
-                <div className="text-sm text-gray-700">{course.title}</div>
-              </div>
-            </div>
-          </li>
+          <DraggableCourse key={course.uid} course={course} />
         ))}
       </ul>
     </div>
