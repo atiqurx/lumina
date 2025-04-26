@@ -1,0 +1,534 @@
+[
+  {
+    "CourseCode": "COSC 10",
+    "Title": "Problem Solving via Object-Oriented",
+    "Description": "2. Digital Arts elective: One Digital Arts elective outside Programming the Computer Science department, listed above as additional courses under the description of the Digital Arts Instructor: Pierson Minor Motivated by problems that arise in a variety of disciplines, this course examines concepts and develops COSC - Computer Science - Undergraduate skills in solving computational problems. Topics covered Courses include abstraction (how to hide details), modularity (how To view the Computer Science Undergraduate to decompose problems), data structures (how to requirements, click here. (p. 210) efficiently organize data), and algorithms (procedures for solving problems). Laboratory assignments are To view the Computer Science Graduate requirements, (p. implemented using object-oriented programming 807)click here. techniques. To view the Computer Science Graduate courses, click",
+    "Prerequisite": "COSC 1 or ENGS 20 or placement through",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 1",
+    "Title": "Introduction to Programming and",
+    "Description": "Degree Requirement Attributes: Dist:TLA Computation",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 16",
+    "Title": "Introduction to Computational",
+    "Description": "Instructor: Kommineni (Fall), Casey (Winter), Campbell Neuroscience (Spring) Instructor: Granger This course introduces computational concepts that are fundamental to computer science and are useful for the Your brain is composed of low-precision, slow, sparsely- sciences, social sciences, engineering, and digital arts. connected computing elements, yet it outperforms any Students will write their own interactive programs to extant computer on tasks ranging from perception to analyze data, process text, draw graphics, manipulate planning. Computational Neuroscience has as its twin images, and simulate physical systems. Problem goals the scientific understanding of how brains compute decomposition, program efficiency, and good thought, and the engineering capability to reconstruct the programming style are emphasized throughout the course. identified computations. Topics in the class included No prior programming experience is assumed. anatomical circuit design, physiological operating rules, evolutionary derivation, mathematical analyses, and Degree Requirement Attributes: Dist:TLA emergent behavior, as well as development of applications from robotics to medicine. 214| DARTMOUTH COLLEGE ORGANIZATION, REGULATIONS, AND COURSES 2024-25",
+    "Prerequisite": "One of PSYC 1, PSYC 6, COSC 1, or ENGS  COSC 20 - Motion Study: Using Motion Analysis for",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 19.01",
+    "Title": "Writing about Technology",
+    "Description": "applications. In this class, students will learn the This course serves as an introduction to both the theory foundations of this new field from basic anatomical and practice of writing effectively about technology. principles of motion to how motions express a variety of Designed specifically for students with a technical human qualities (e.g., status, emotion). Students will work background, the course will mix readings and discussion, with a motion capture system to record and analyze their drawing from a wide variety of canonical examples of this own movement to gain a hands-on understanding of how type of prose, with writing assignments oriented toward motion capture can enhance art and science. improving the students\u2019 craft. Degree Requirement Attributes: Dist:TAS",
+    "Prerequisite": "COSC 1",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 21",
+    "Title": "Foundations of Digital Design",
+    "Description": "",
+    "Prerequisite": "",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 19.02",
+    "Title": "Security Engineering",
+    "Description": "Instructor: Mahoney Instructor: Saydjari This projects-based course will familiarize students with This course covers cybersecurity systems engineering the fundamentals of digital design, including layout, principles of design. Students will learn the foundational typography, composition, color theory, and process. and timeless principles of cybersecurity design and Foundational concepts and the universal principles of engineering. They will learn why theories of security design will be explored through extensive analyses and a come from theories of insecurity, the important role of series of design projects. No previous art or technical failure and reliability in security, the fundamentals of experience is required. Work is evaluated on a set of cybersecurity risk assessment, the building blocks of technical and aesthetic criteria and class participation. Plan cybersecurity, intrusion detection design, and advanced to meet during every X-Hour. topics like cybersecurity situational understanding and Degree Requirement Attributes: Dist:ART command and control. The course develops the student's ability to understand the nature and source of risk to a COSC 22 - 3D Digital Modeling system, prioritize those risks, and then develop a security Instructor: Loeb architecture that addresses those risks in a holistic manner, effectively employing the building blocks of cybersecurity This projects-based lab course teaches the principles and systems\u2014prevention, detection, reaction, and attack- practices of 3D modeling. Anyone with an interest in tolerance. The student will learn to think like a learning how models and environments in film, games, and cyberattacker so that they can better design and operate VR applications are made, this course is for you. We focus cybersecurity systems. Students will attain the skill of on modeling, shading, textures, lighting, and rendering, systematically approaching cybersecurity from the top along with some dynamics, special effects, and animation. down and the bottom up and have confidence that their Students create environments and a fully rigged character system designs will be effective at addressing the full model while learning their way around a state-of-the-art spectrum of the cyberattack space. The course also 3D animation program. Work will be evaluated on a set of addresses how the cybersecurity attack and defense technical and aesthetic criteria. Assignments are given landscape will evolve so that the student is not simply weekly. Plan to meet every X-Hour. No prior experience, ready to address today\u2019s problems, but can quickly adapt coding or drawing skills needed. COSC 22 and COSC 24 and prepare for tomorrow\u2019s. The course is important at any can be taken in any order. stage in a student\u2019s curriculum: whether at the beginning to Degree Requirement Attributes: Dist:TLA enable the student to grok the big picture before diving into the details, at the end as a capstone, or in the middle to COSC 23.01 - Augmented and Virtual Reality Design help integrate the skills learned so far. Instructor: Mahoney",
+    "Prerequisite": "COSC 1",
+    "DegreeAttributes": "Dist:ART"
+  },
+  {
+    "CourseCode": "COSC 24",
+    "Title": "Computer Animation: The State of the Art",
+    "Description": "interactive digital installations and media. Students work in Instructor: Preston small teams to complete work of a high production quality or work that incorporates innovations in This hands-on course focuses on state-of-the-art computer technology. Grades are based on aesthetic and technical animation, presenting techniques and principles of criteria along with teamwork and adherence to weekly traditional animation and how they apply to 3D computer milestones. animation, motion capture, and dynamic simulations. Facial and full-body animation are covered through",
+    "Prerequisite": "COSC 22 and either COSC 24 or COSC",
+    "DegreeAttributes": "Dist:ART"
+  },
+  {
+    "CourseCode": "COSC 25.01",
+    "Title": "Intro to UI/UX Design I  want to continue working on projects in digital arts or for",
+    "Description": "students who want to stretch their skills in a new way. Instructor: Loeb Projects may include computer animations, interactive COSC 25.01 is a hands-on projects-based course that digital arts, installations, or research projects. Students teaches the concepts, principles, and practice of User work alone or in teams. This course may be taken twice. Interface (UI) and User Experience (UX) Design. It is",
+    "Prerequisite": "COSC 27 and permission of the instructor is",
+    "DegreeAttributes": "Dist:ART  and experiences for community partners as part of the"
+  },
+  {
+    "CourseCode": "COSC 25.02",
+    "Title": "Intro to UI/UX Design II",
+    "Description": "how we can solve a problem, we look at how we can create Instructor: Loeb delight for users. Students will learn how to combine core principles from human psychology with the tools of design This Independent Study course offers students who have to create products and user experiences that promote taken COSC 25.01 a chance to put what they learned in the engagement, adoption, and learning. Past community classroom into practice. Students might work as a designer partners have included the Hartford Autism Regional in the DALI Lab or on another project. In addition to Program (HARP) and the Aging Resource Center. completing a project as a designer, students design and build an online portfolio. Cross-Listed as: PSYC 015 216| DARTMOUTH COLLEGE ORGANIZATION, REGULATIONS, AND COURSES 2024-25 Degree Requirement Attributes: Dist:TMV Degree Requirement Attributes: Dist:QDS",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TMV  Degree Requirement Attributes: Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 29.05",
+    "Title": "Digital Fabrication  COSC 31 - Algorithms",
+    "Description": "Instructor: Littler Instructor: Chakrabarti (Winter) Artists, designers, creators, and makers increasingly use A survey of fundamental algorithms and algorithmic digital fabrication methods in both two and three techniques, including divide-and-conquer algorithms, dimensions as a means of designing, rapid prototyping and dynamic programming, randomized algorithms, greedy manufacturing. This class uses digital fabrication tools in a algorithms, and graph algorithms. Presentation, studio setting. Students learn digital fabrication through a implementation and formal analysis, including space/time series of 2D and 3D design projects and through critical complexity and proofs of correctness, are all emphasized. discussions of the aesthetic, sociological and practical",
+    "Prerequisite": "COSC 10 and COSC 30. Students who have",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 29.06",
+    "Title": "Digital Tangible User Interfaces  algorithms course, covering a number of advanced topics",
+    "Description": "and ideas in algorithm design and analysis. You will learn Instructor: Huang about the use of advanced data structures, amortized As computation becomes ubiquitous, we find interactive analysis, randomization, linear programming, and digital devices scattered around our homes, as integral approximation. The focus will be on methodology and parts of our living environments, including smart broadly-applicable fundamental principles, rather than appliances, interactive architectural elements, toys, and specific problem domains. interactive artworks. Digital Tangible User Interfaces",
+    "Prerequisite": "An undergraduate-level course in Algorithms",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 34",
+    "Title": "Randomized Algorithms",
+    "Description": "that the user can naturally interact with the daily product and their living environment. This course will focus on the Randomness is one of the key resources in algorithm theory, process, and practice of building intelligent objects design. Many problems have faster algorithms if and spaces. Students will be required to design and randomization is allowed, and indeed, for certain problems implement tangible user interface projects by using randomness is essential. The course will introduce the physical computing tools (Arduino) and computer probability basics, the fundamental tools, and provide languages such as Processing. multiple applications in machine learning, big data, optimization, etc. Not open to students who have received",
+    "Prerequisite": "COSC 1 or COSC 2",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 30",
+    "Title": "Discrete Mathematics in Computer Science",
+    "Description": "Degree Requirement Attributes: Dist:QDS Instructor: Chakrabarty (Fall), Chang (Winter),",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 35",
+    "Title": "Data Stream Algorithms",
+    "Description": "Chakrabarti(Spring) This course studies algorithms that process massive This course develops the mathematical foundations of amounts of data; so massive that they will not fit in a computer science that are not calculus-based. It covers computer\u2019s storage. The course will cover a wide variety of basic set theory, logic, mathematical proof techniques, and techniques for summarizing such large amounts of data a selection of discrete mathematics topics such into succinct \u201csketches\u201d that nevertheless retain important as combinatorics (counting), discrete probability, number and useful information. The course starts from the basics, theory,and graph theory. The mathematics is frequently assuming only a basic knowledge of algorithms, and builds motivated using computer science applications. up to advanced techniques from recent research. The",
+    "Prerequisite": "Math 3 and COSC 10; or Math 3, Instructor  necessary mathematical tools are developed within the",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 36",
+    "Title": "Approximation Algorithms  Five key computational resources are studied: time, space,",
+    "Description": "nondeterminism, randomness, and interaction. Key Instructor: Chakrabarty concepts studied include reductions, the polynomial Many problems arising in computer science are NP-hard hierarchy, Boolean circuits, pseudorandomness and one- and therefore we do not expect efficient algorithms for way functions, probabilistic proof systems, and hardness of solving them exactly. This has led to the study of approximation. approximation algorithms where algorithms are supposed",
+    "Prerequisite": "COSC 39 or equivalent. Students need to be",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 37",
+    "Title": "Information Theory in Computer Science",
+    "Description": "",
+    "Prerequisite": "Vary according to the topic.  Consult with the",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 39",
+    "Title": "Theory of Computation  protocol (under certain reasonable assumptions about the",
+    "Description": "system). Instructor: Chang In the course, we will look at several fascinating This course serves as an introduction to formal models of coordination problems and solve them for several models languages and computation. Topics covered include finite of distributed computing: shared-memory versus message automata, regular languages, context-free languages, passing, synchronous versus asynchronous, fault-free pushdown automata, Turing machines, computability, and versus fault-tolerant. We design algorithms, and prove NP-completeness. lower bounds or even impossibility results.",
+    "Prerequisite": "COSC 30 and/or COSC 31. Students who",
+    "DegreeAttributes": "Dist:QDS  Prerequisite: COSC 31 (Undergraduate Algorithms) or"
+  },
+  {
+    "CourseCode": "COSC 40",
+    "Title": "Computational Complexity",
+    "Description": "Degree Requirement Attributes: Dist:TAS This course covers the basics of computational complexity, whose broad goal is to classify computational problems into classes based on their inherent resource requirements. 218| DARTMOUTH COLLEGE ORGANIZATION, REGULATIONS, AND COURSES 2024-25",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 49.06",
+    "Title": "Approximation Algorithms  course serves as an introduction to the rapidly growing",
+    "Description": "area(s) of computational topology. Many problems arising in computer science are NP-hard and therefore we do not expect polynomial time algorithms",
+    "Prerequisite": "CS30 and CS31 and (MATH22 or MATH24",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 49.07",
+    "Title": "21st Century Algorithms  optimization, etc.",
+    "Description": "The new century has brought us a new class of",
+    "Prerequisite": "A first course on algorithms and",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 49.08",
+    "Title": "Information Theory in Computer",
+    "Description": "one can also perform a sketching to reduce the size and Science amount of the data required. This seminar-style course is Instructor: Chakrabarti aimed to introduce the various ways to encode metric spaces in a succinct fashion with minimal distortion, This course introduces students to information theory, a suitable for their algorithmic purposes. Naturally, due to mathematical formalism for quantifying and reasoning the vast amount of work and literature in the area, the about communication. While traditionally a part of topics covered in this class will be biased towards the electrical engineering, it has found several powerful interest and expertise of the instructor. applications in the theory of algorithms and complexity and adjacent fields such as combinatorics and game theory.",
+    "Prerequisite": "COSC 30, COSC 31, and at least one course",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 49.09",
+    "Title": "Introduction to Computational Topology  problems as networks, meshes, or terrains that are",
+    "Description": "geometric and low-dimension in nature, which Topology is the art of studying shapes without precise unsurprisingly find many applications in computer measurements. It is not surprising then that topology has graphics, visualization, vehicle routing, and shape analysis. found many applications in computer science, both in This graduate-level seminar-style course is aimed to theoretical and applied research including algorithms and introduce a vast array of tools for planar graphs, ranging complexity theory, data analysis, robotics, computer from combinatorial to geometric to spectral to algorithmic graphics, etc., where often the input data is geometrically and beyond. Naturally, due to the sheer amount of work constrained, or noisy due to measurement errors. The and literature in the area, the topics covered in this class DEPARTMENTS/PROGRAMS AND COURSES - UNDERGRADUATE| 219 will be biased towards the interest and expertise of the The migration of important social processes to distributed, instructor. electronic systems raises critical security and privacy issues. Precisely defining security and privacy is difficult;",
+    "Prerequisite": "COSC 30 or Math 38 and Math 22, Math 24",
+    "DegreeAttributes": "Dist:QDS  that might help, and how to use these techniques"
+  },
+  {
+    "CourseCode": "COSC 50",
+    "Title": "Software Design and Implementation",
+    "Description": "professionals with the breadth of knowledge necessary to Instructor: Palmer (Fall), Hauser, Prioleau (Winter), Kim navigate this emerging area. (Spring)",
+    "Prerequisite": "COSC 50 or instructor permission. COSC 51",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 51",
+    "Title": "Computer Architecture  by a digital design project in which the student designs and",
+    "Description": "builds a large system of his or her choice. In the process, Instructor: Smith Computer-Aided Design (CAD) and construction The architecture and organization of a simple computer techniques for digital systems are learned. system is studied. Topics covered include how information",
+    "Prerequisite": "ENGS 20 or COSC 1 and COSC 10",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 57",
+    "Title": "Compilers",
+    "Description": "",
+    "Prerequisite": "COSC 1, ENGS 20, or placement through the",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 52",
+    "Title": "Full-Stack Web Development  of various techniques and formalisms that can be used for",
+    "Description": "describing the syntax and semantics of programming Instructor: Tregubov languages, for describing abstract and concrete machine architectures, and for describing program translation and The Web is a powerful delivery tool for complex real-time transformation. This course includes a project to construct applications. This is an introduction to full stack Web a compiler that will translate a program written in a high- application development \u2014 the approach of integrating level language into machine code for a conventional- numerous techniques and technologies to build modern architecture machine. Web applications. Topics include: static pages, Internet protocols, layout, markup, event-driven asynchronous",
+    "Prerequisite": "COSC 50. COSC 51 is recommended.",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 58",
+    "Title": "Operating Systems",
+    "Description": "",
+    "Prerequisite": "COSC 10",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 55",
+    "Title": "Security and Privacy  allocate resources and create virtual machines for the",
+    "Description": "execution of user jobs. Topics covered include storage Instructor: Kim (Fall), Saydjari (Spring) management, scheduling, concurrent processing, shared 220| DARTMOUTH COLLEGE ORGANIZATION, REGULATIONS, AND COURSES 2024-25 access to files, synchronization, and data protection. Both data warehousing, mobile databases and storage file abstract models and actual examples of operating systems structures. will be studied.",
+    "Prerequisite": "COSC 50 or equivalent, as approved by",
+    "DegreeAttributes": "Dist:TAS  Degree Requirement Attributes: Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 59",
+    "Title": "Principles of Programming Languages  COSC 62 - Applied Cryptography",
+    "Description": "This course provides a study of the principles of Cryptography is the fundamental building block for programming languages. The course will focus on the establishing and maintaining trustworthy connections and similarities and differences among imperative, functional, communications in the Internet; it's the first line of defense logical, and object-oriented programming languages. for keeping adversaries from spying on credit card Topics include formal definitions of languages and tools numbers being sent to Amazon or on whistleblower reports for automatic program translation, control structures, sent to journalists. This course will examine what's in this parameter passing, scoping, types, and functions as first- toolkit: symmetric ciphers, public-key cryptography, hash class objects. For each language category, implementation functions, pseudorandomness. To enable the well-cultured issues will be discussed, and program development computer scientist to understand how these tools are used strategies illustrated through programming exercises. in the real world, this course will cover these topics from multiple perspectives: theoretical foundations, use in",
+    "Prerequisite": "COSC 10, COSC 30 and COSC 51 are",
+    "DegreeAttributes": "Dist:TAS  circumvention, public policy questions, and prospects for"
+  },
+  {
+    "CourseCode": "COSC 60",
+    "Title": "Computer Networks",
+    "Description": "",
+    "Prerequisite": "COSC 30, COSC 50. COSC 51 and COSC 55",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 63",
+    "Title": "Programming Parallel Systems",
+    "Description": "Aspects of network architectures are also considered. Laboratory projects are an integral part of the course in Multi-core processors are now ubiquitous in most personal which networking concepts are explored in depth. computers. These are the fundamental computer- engineering building blocks for high-performance servers,",
+    "Prerequisite": "COSC 30 and COSC 50; COSC 51 is",
+    "DegreeAttributes": "Dist:TAS  through networking and collectively programmed. This"
+  },
+  {
+    "CourseCode": "COSC 61",
+    "Title": "Database Systems",
+    "Description": "opportunity to explore problem-solving techniques on a Instructor: Palmer high-performance multi-computer containing quad-core processors. The course involves weekly programming This course studies the management of large bodies of data laboratories that teach POSIX thread, UDP and TCP or information. This includes schemes for the network, and MPI style programming techniques. These representation, manipulation, and storage of complex techniques are explored in the context of scalable problem information structures as well as algorithms for processing solving methods applied to typical problems in science and these structures efficiently and for retrieving the engineering ranging from client-server sensing and data information they contain. This course will teach the student repositories, to numerical methods, gaming and decision techniques for storage allocation and deallocation, retrieval support. All laboratories will be conducted in the C (query formulation), and manipulation of large amounts of programming language and proficiency in C is required. heterogeneous data. Students are expected to program and Enrollment is limited to 30 students. become involved in a project in which they study important aspects of a database system: ways to organize a",
+    "Prerequisite": "ENGS 20 or COSC 50.",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 63.01",
+    "Title": "Augmented and Virtual Reality",
+    "Description": "access; privacy; object-oriented schemes for multimedia Development data; indexing, hashing, concurrency control, data mining, Instructor: Mahoney DEPARTMENTS/PROGRAMS AND COURSES - UNDERGRADUATE| 221 This hands-on projects-based course is for developers who COSC 67 - Introduction to Human-Computer have completed COSC 10. It covers the technical, Interaction aesthetic, and societal issues surrounding the emerging Instructor: Prioleau frontiers of digitally mediated realities. Students learn the fundamentals of augmented and virtual reality This course provides the fundamentals of human-computer development, while working in small interdisciplinary interaction, including human factors, usability, user- teams with digital arts students who are concurrently centered design, prototyping, and usability evaluation. enrolled in COSC 23.01. COSC 63.01 and COSC 23.01 Students will learn the skills and knowledge to identify have class together and work together on teams. users\u2019 needs and limitations through observations and Developers in this course build interactive digital tools, interviews. They will experience rapid prototyping and games, and visualizations, while designers create assets will learn common HCI evaluation techniques, such as and the interface. This course will also address the qualitative and quantitative methods, to evaluate their sociological implications of the technology. This course is designs and implementations. Additionally, students will not open to students who have received credit for COSC be exposed to the state-of-the-art research within HCI. 29.22 or COSC 89.22.",
+    "Prerequisite": "COSC 10",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 68",
+    "Title": "Advanced Operating Systems",
+    "Description": "",
+    "Prerequisite": "",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 65",
+    "Title": "Smartphone Programming",
+    "Description": "This course covers advanced topics in operating systems, This course teaches students how to design, implement, including issues such as thehardware/software interface, test, debug and publish smartphone applications. Topics operating-system structure, CPU scheduling, concurrency, include development environment, phone emulator, key virtual memory, interprocess communication, file systems, programming paradigms, UI design including views and protection, security, fault tolerance, and transaction activities, data persistence, messaging and networking, processing. The course also considers many of these topics embedded sensors, location based services (e.g., Google in the context of distributed systems. Maps), cloud programming, and publishing applications. Concepts are reinforced through a set of weekly",
+    "Prerequisite": "A grade of B+ or better in COSC 58/258, or",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 69",
+    "Title": "Topics in Computer Systems",
+    "Description": "Degree Requirement Attributes: Dist:TAS Instructor: Bratus (Winter), Smith (Spring",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 66",
+    "Title": "Game Development Principles Applied In",
+    "Description": "This course studies an advanced topic in computer systems Educational/Serious Games that is not covered in the regular curriculum. Students may Digital games are a growing platform for education, take courses under this rubric multiple times, subject to the entertainment, and visualization with a myriad of restriction that the topics are distinct. The subject material technological and theoretical challenges. This course under this rubric differs from course to course depending explores the concepts and techniques involved in on the instructor. Please refer to individual courses for developing real-time 2D and 3D games, as well as the detailed instruction. opportunities and constraints when applied to the field of",
+    "Prerequisite": "Vary according to the topic.  Consult with the",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 69.13",
+    "Title": "Multirobot Systems  COSC 69.16 - Basics of Reverse Engineering",
+    "Description": "Multirobot Systems is a seminar-course that will explore Frequently, the source code for an important operating why multirobot systems are important, the extra challenges system component, malware, or piece of commercial that need to be addressed, and the current state of the art in software is not available. This course explores the art and deploying multiple robots. science of reverse engineering such systems to discover how they work, how they connect to other systems, and Students will learn the computational aspects of multiagent how they may be controlled. In this course, you will and multirobot systems, including sensing, coordination, develop an understanding of how systems and and communication, and will have the opportunity to development tool chains are built \"under the hood\". You develop and evaluate a behavior on a real multirobot will learn to read compiled binaries without available system. source code, to recover program logic, and to modify Degree Requirement Attributes: Dist:TAS (de)compiled binaries. We will seek to understand the challenges of reverse engineering larger programs, and of",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS  (de)compiled binaries. We will seek to understand the"
+  },
+  {
+    "CourseCode": "COSC 69.14",
+    "Title": "Functional Programming in Haskell",
+    "Description": "automating reverse engineering. This course teaches a different approach to programming.",
+    "Prerequisite": "",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 69.17",
+    "Title": "Software Security",
+    "Description": "In functional programming, we treat programs like values. The type of that value tells you what the program might do Instructor: Kim and restricts the possible buggy programs that don\u2019t do While software forms the backbone of modern computer what you want them to do. In Haskell, you direct the type systems, it is a prime target for cyberattacks. system to help improve your productivity, and your code\u2019s Cybercriminals are constantly exploring their maintainability, by ensuring that certain bugs yield vulnerabilities and deploying illegitimate code to uncompilable code. Haskell programming is a accomplish their malicious goals. This course is designed recommended skill, regardless of whether you have a to provide students with the comprehensive understanding direct need for it. Programming in Haskell is not difficult, of software security, both fundamental principles and low- but has a steep learning curve when attempting to learn it level details of real-world offense and defense within on your own. Hence this course won\u2019t be easy, but it will software systems. Topics span vulnerability detection, help you through the difficult part. We use the latest GHC exploitation mitigation, malware analysis, reverse compiler, which is the most commonly used Haskell engineering, and more. compiler in industry.",
+    "Prerequisite": "COSC 50, 51, familiarity with C language",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 69.15",
+    "Title": "Robotics Perception Systems  based operating systems and programming environment is",
+    "Description": "recommended. This seminar course focuses on the issues and approaches to process and fuse data from robotics perception systems Degree Requirement Attributes: Dist:TAS to enable robot autonomy, e.g., self-driving cars. The",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 69.18",
+    "Title": "HackLab: Binary Program Analysis for",
+    "Description": "course will be very hands-on: some preliminary Software Attacks and Defenses assignments will immerse you in the robotics world and how to process the sensor data for situational awareness. Instructor: Hauser Through selected papers taken from the literature, students Modern software keeps expanding in terms of size, will learn different aspects of robotics perception systems, application domains, users, and quantity of processed including computer vision, simultaneous localization and information. As a result of this, the attack surface and mapping, and machine learning. In addition, students will range of vulnerabilities targeted by attackers increases on a learn how to critically analyze a paper and how to DEPARTMENTS/PROGRAMS AND COURSES - UNDERGRADUATE| 223 constant basis. Simultaneously, while humans reason about Degree Requirement Attributes: Dist:QDS programs at the source-code level, a set of abstractions",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 72",
+    "Title": "Accelerated Computational Linguistics",
+    "Description": "designed by humans for humans, computers execute machine code: a translation of source code into low-level Instructor: Preum (Winter) instructions. This course sheds light on the discrepancies The study of human language from a computational between source code and what computers actually execute, perspective. This accelerated course has programming and examines some of the root causes and inner-workings background equivalent to that provided by COSC 1 as a of several common classes of software vulnerability, how prerequisite. This course will survey formal models for these can be exploited to take control of remote systems, representing linguistic objects, and statistical approaches to how those can be addressed and how to scale their learning from natural language data. We will pay attention detection and mitigation by leveraging automated program to the use of computational techniques to understand the analysis techniques. Students will learn the practice and structure of language, as well as practical engineering theory of ethical hacking through hands-on program applications like speech recognition and machine analysis problems, Capture-The-Flag (CTF) competition translation. Students will implement simple algorithms for challenges, exploitation and defense techniques as well as several key tasks in language processing and learning. state-of-the-art research models. By studying the attack surface of modern software, students will learn how to",
+    "Prerequisite": "COSC 01",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 73",
+    "Title": "Computational Aspects of Digital",
+    "Description": "Degree Requirement Attributes: Dist:TAS Photography",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS  Photography"
+  },
+  {
+    "CourseCode": "COSC 70",
+    "Title": "Foundations of Applied Computer Science  Instructor: Pediredla",
+    "Description": "Instructor: Pediredla (Fall), Yang (Winter), Jarosz (Spring) Computational photography lies at the intersection of photography, computer vision, image processing, and This course introduces core computational and computer graphics. At it\u2019s essence, it is about leveraging mathematical techniques for data analysis and physical the power of digital computation to overcome limitations modeling, foundational to applications including of traditional photography. The course will cover the optics computational biology, computer vision, graphics, machine of cameras and sensors, how cameras form images, and learning, and robotics. The approaches covered include how we can represent them digitally on a computer. We modeling and optimizing both linear and nonlinear will focus on software techniques like image processing systems, representing and computing with algorithms for photography, high-dynamic-range uncertainty, analyzing multi-dimensional data, and photography and tone mapping, and the math and sampling from complex domains. The techniques are both algorithms behind popular image manipulation tools like grounded in mathematical principles and practically Photoshop. Coursework will include taking some photos applied to problems from a broad range of areas. Not open and implementing several algorithms to manipulate those to students who have received credit for COSC 70.01. photos in weekly programming assignments (in C ). We",
+    "Prerequisite": "MATH 3, COSC1 required, COSC 10  will also read, present and discuss recent research papers in",
+    "DegreeAttributes": "Dist:QDS  photography today, and have sufficient background to"
+  },
+  {
+    "CourseCode": "COSC 71",
+    "Title": "Numerical Methods in Computation",
+    "Description": "",
+    "Prerequisite": "COSC 10 and COSC 70; COSC 50 is",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 74",
+    "Title": "Machine Learning and Statistical Data",
+    "Description": "interpolation, evaluating integrals, solving ordinary differential equations, and determining eigenvalues and Analysis eigenvectors of matrices. The student will be required to Instructor: Preum, Yang (Fall), Vosoughi, Yan (Winter), write and run computer programs. Vosoughi (Spring)",
+    "Prerequisite": "COSC 1 and COSC 10, or ENGS 20; ENGS",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 78",
+    "Title": "Deep Learning",
+    "Description": "",
+    "Prerequisite": "COSC 1 or ENGS 20; COSC",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 75",
+    "Title": "Introduction to Bioinformatics  using large collections of examples. Deep learning is a",
+    "Description": "special form of machine learning where rich data Bioinformatics is broadly defined as the study of molecular representations are simultaneously learned with the model, biological information, and this course introduces thus eliminating the need to engineer features by hand. computational techniques for the analysis of biomolecular sequence, structure, and function. While the course is The course begins with a comprehensive study of application-driven, it focuses on the underlying algorithms feedforward neural networks, which are the model of and information processing techniques, employing choice for most hierarchical representation learning approaches from search, optimization, pattern recognition, algorithms. Other models covered in this course include and so forth. The course is hands-on: programming lab convolutional neural networks, restricted Boltzmann assignments provide the opportunity to implement and machines, autoencoders, sparse codes. Several lectures are study key algorithms. devoted to discuss strategies to improve the bias-variance",
+    "Prerequisite": "COSC 10; COSC 70/70.01 (formerly COSC  tradeoff, such as regularization, data augmentation, pre-",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 76",
+    "Title": "Artificial Intelligence",
+    "Description": "",
+    "Prerequisite": "COSC 74",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 81",
+    "Title": "Principles of Robot Design and",
+    "Description": "Topics include games, robotics, motion planning, Programming knowledge representation, logic and theorem proving, probabilistic reasoning over time, understanding of natural Instructor: Quattrini Li languages, and discussions of human intelligence. This course is a hands-on introduction to robotics. Students",
+    "Prerequisite": "COSC 10. COSC 30 is recommended.  will build robots, program robots, and learn to",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 77",
+    "Title": "Computer Graphics  of rigid-body motion, motion planning, control, mechanics",
+    "Description": "of friction and contact, grasping, sensing, uncertainty in Instructor: Jarosz (Fall), Tai (Winter) robotics, and applications of robots. This course provides a broad introduction to the",
+    "Prerequisite": "COSC 70/70.01 (formerly COSC 11), or",
+    "DegreeAttributes": "Dist:TLA"
+  },
+  {
+    "CourseCode": "COSC 83",
+    "Title": "Computer Vision",
+    "Description": "meshes, subdivision surfaces), geometrical transformations (e.g. rotations, scales, translations, and perspective Instructor: Pediredla projection), rigging and skinning, the rasterization pipeline, This course provides an introduction to computer vision, ray tracing, illumination and shading models, texturing, the art of teaching computers to see. Topics include image and light & visual perception. Coursework typically formation, feature detection, segmentation, 3D includes a mix of programming assignments, quizzes/hand- reconstruction from multiple views, motion estimation, and written work, assigned readings, and a final project. object recognition. Knowledge of basic linear algebra and programming skills are assumed.",
+    "Prerequisite": "COSC 1 or ENGS 20; COSC 70/70.01",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 84",
+    "Title": "Mathematical Optimization and Modeling  practical experience. Additional coursework includes",
+    "Description": "quizzes/handwritten exercises and assigned readings. At Planning, scheduling, and design problems in large the end of the term, each student will work on a self- organizations, economic or engineering systems can often directed final project that extends their rendering software be modeled mathematically using variables satisfying with additional features of their own choosing with the linear equations and inequalities. This course explores goal of creating a photorealistic image. these models: the types of problems that can be handled, their formulation, solution, and interpretation. It introduces",
+    "Prerequisite": "COSC 70/70.01 (formerly COSC 11) and",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.11",
+    "Title": "Cognitive Computing with Watson",
+    "Description": "",
+    "Prerequisite": "",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 86",
+    "Title": "Computational Structural Biology",
+    "Description": "Building a computer program capable of answering Computational methods are helping provide an questions with human-level competence has been one of understanding of how the molecules of life function the grand challenges of Artificial Intelligence. IBM\u2019s through their atomic-level structures, and how those Watson system has achieved remarkable results. This class structures and functions can be applied and controlled. will explore the AI methods used in Watson. Topics This course will introduce the wide range of complex and include: natural language processing, knowledge fascinating challenges and approaches in computational representation, automated reasoning, machine learning, and structural biology, and will give hands-on experience information retrieval. Students will work in teams to applying and implementing some important methods. develop applications that use Watson as a Cloud Service in",
+    "Prerequisite": "COSC 10 or permission of the instructor.  some novel way. This class will be one of few in the world",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 87",
+    "Title": "Rendering Algorithms",
+    "Description": "The class will focus on projects and group work that Instructor: Jarosz culminates in building a novel application for question answering. Student teams will benefit from drawing on This class is intended for students interested in obtaining a experience from various other classes, including data deep technical understanding of the physically based mining, information retrieval, natural-language processing, rendering techniques used to produce photorealistic images mobile computing and entrepreneurship. in animated films, visual effects, or architectural and product visualizations. Understanding the strengths and limitations of current question-answering technology will be key to a successful Students will learn how light behaves and interacts with application. We will read and discuss research publications objects in the real world and how to translate the on various aspects of the technology, primarily focused on underlying math and physics into practical algorithms for the Watson system. creating photorealistic images. The course will provide a",
+    "Prerequisite": "COSC 50",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.13",
+    "Title": "Robot Motion Planning",
+    "Description": "Each major topic will also be accompanied by a Instructor: Balkcom programming assignment where students implement these algorithms within their own software framework to obtain 226| DARTMOUTH COLLEGE ORGANIZATION, REGULATIONS, AND COURSES 2024-25 This is a small advanced seminar course in robotic motion optimize, design, and control various physical systems. planning. Topics to be covered include configuration Course topics cover fundamental numerical approaches for space, forwards and inverse kinematics, differential modeling and simulating rigid body, soft body, and cloth, kinematics, representations for motion planning, and as well as design and optimization algorithms for drones classical planning algorithms including cell-decomposition and soft robots. The materials will be illustrated using and probabilistic methods. examples and applications from physics-based animation, robot design, fashion design, and 3D printing.",
+    "Prerequisite": "COSC 10",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.19",
+    "Title": "Machine Learning for Robotics",
+    "Description": "Degree Requirement Attributes: Dist:TAS Machine Learning for Robotics is a course mixed with",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.14",
+    "Title": "Research Topics in Human-Computer",
+    "Description": "lectures, students\u2019 presentations, and assignments that Interaction explore machine learning techniques for robotics This is a topics course in Human-computer Interaction. applications. After a review of some supervised and The course is designed to introduce students to advanced unsupervised machine learning techniques, we will focus HCI research methods and techniques, including on some specific ones, currently popular in robotics, observation, design, implementation, and evaluation. It including reinforcement and deep learning. Students will will also expose students to state-of-the-art research topics have the opportunity to use machine learning frameworks in HCI, including interaction techniques, actuated for some robotics problems. \\f interfaces, ubiquitous computing, context-aware \\f computing, tangible interfaces, mobile interfaces, and wearable interfaces. This course involves a mix of lectures",
+    "Prerequisite": "COSC 11 and COSC 50",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 89.17",
+    "Title": "Health Informatics  state-of-the-art methods for data acquisition and analysis,",
+    "Description": "with an emphasis on interpretation of behavioral and Instructor: Khayal physiological data. Students will develop their skills by Our health is everywhere. It is aff\\u000Bected by how, reading, presenting, and critiquing seminal research papers where, and who we live, work & play with (i.e. biological, in the health space. The course will also include behavioral, social, and environmental factors). The assignments and a group project to reinforce concepts and explosion of data digitization{captured both outside `in the methods widely used in data science. wild' and within the healthcare delivery system, allows us",
+    "Prerequisite": "COSC 74 or instructor permission",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 89.21",
+    "Title": "Data Mining and Knowledge Discovery",
+    "Description": "by healthcare delivery systems, organizations, or users and can be accessed through devices, databases, or the web Instructor: Vosoughi (e.g., APIs). Deriving information and knowledge to This course introduces the basic concepts, principles, improve and support health requires health informatics. methods, implementation techniques, and applications of Data science plays an active role as a profession and within data mining. The course covers all the steps required to its research eff\\u000Borts in informing and developing all turn raw data into meaningful insights, including: aspects of health informatics: data capture, data storage, obtaining and cleaning data, pattern discovery, and data and data analytics. visualisation. Throughout the course, students will work on Degree Requirement Attributes: Dist:TAS data mining projects using real-world data to gather hands- on experience. The course will be taught in Python.",
+    "Prerequisite": "",
+    "DegreeAttributes": "Dist:TAS  data mining projects using real-world data to gather hands-"
+  },
+  {
+    "CourseCode": "COSC 89.18",
+    "Title": "Computational Methods for Physical",
+    "Description": "Systems",
+    "Prerequisite": "COSC 10; adequate knowledge of probability",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.23",
+    "Title": "Network Science and Complex Systems  Prerequisite: This course assumes an understanding of",
+    "Description": "multi-variable calculus and linear algebra and proficiency Instructor: Yan in C++ programming. Students are recommended to take Many of the systems that surround us are complex. These COSC 70 as a prerequisite or to show equivalent systems span almost every scientific field of inquiry, from understanding and comfortableness with the associated biological to social, and computational sciences. To materials. understand the behavior of complex systems, we must Degree Requirement Attributes: Dist:QDS study not only the parts but the emergent behavior that arises from such systems when the parts act together. COSC 89.26 - Security and Privacy in the Lifecycle of Complex systems are by definitions highly interconnected, IoT for Consumer Environments therefore, at the core of studying complex systems is We are entering an era of Smart Things, in which everyday understanding networks. This seminar is an introduction to objects become imbued with computational capabilities the main concepts of networks and complex systems, and and the ability to communicate with each other and with their applications. The topics covered in this course will services across the Internet. Indeed, the Internet of Things include: network topologies, network dynamics, motifs, now involves the deployment of Smart Things in everyday dynamic systems, attractors, and chaos. The seminar residential environments \u2013 houses, apartments, hotels, mainly involves reading and discussing seminal, and senior-living facilities \u2013 resulting in Smart Homes. ongoing, works in this field, but we will also be doing Although Smart Things offer many potential benefits, they hands-on modeling and studying toy and real networks can also create unsafe conditions and increase risk of harm using Python. to persons and property. This course explores the key",
+    "Prerequisite": "COSC 10; Math 3, adequate knowledge of  security and privacy challenges required for the vision of",
+    "DegreeAttributes": "Dist:QDS"
+  },
+  {
+    "CourseCode": "COSC 89.24",
+    "Title": "Logic and Artificial Intelligence",
+    "Description": "unintentionally) in a residential setting. Students will read, The goal of this topics course is to study the foundations of present, and discuss papers from the research literature; different types of logic used commonly in artificial write a survey paper about a subset of the research intelligence. Logic forms the basis for many types of literature; and conduct a security analysis of a current reasoning used by humans \u2013 researchers in AI have commercial \u201csmart thing\u201d. Guest lecturers will join the extended classical logic over the years to numerous more class, weekly, to share expertise from both industry and \u201cexotic\u201d logics. This course will cover the foundations of a research. host of classical and non-classical logics, a number of",
+    "Prerequisite": "Required: COSC 50, and experience or",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 89.27",
+    "Title": "Security and Privacy of Machine",
+    "Description": "instructor. Learning",
+    "Prerequisite": "",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 89.25",
+    "Title": "GPU Programming and High",
+    "Description": "Today we see applications of machine learning almost Performance Computing everywhere we look \u2013 in the domains of autonomous The GPU Computing course introduces students to the driving, medical diagnosis, fraud detection, etc. While the basic programming and algorithmic techniques for use of machine learning is increasing in our day-to-day developing the modern parallel computer code for high- lives, these techniques also pose significant threats to performance computing applications. Course topics will security and data privacy. This course will explore recent cover the fundamentals for GPU (CUDA) and CPU (multi- academic research at the intersection of machine learning, threading) parallel programming, parallel computer security, and data privacy that demonstrates the risks architecture, parallel data structures, parallelizable linear adversaries pose to machine learning systems. The research algebra, conjugate gradient and multigrid solvers, particle papers explored in this course would cover attacks on systems and N-body problems, and vectorization. The machine learning systems as well as defense techniques to materials will be illustrated using large-scale computing mitigate such attacks. Students will read, analyze, and examples and applications from computer graphics, discuss research papers, write summaries, take notes, and computational physics, and machine learning. undertake a term-long research project.",
+    "Prerequisite": "COSC 74. Assumes that students understand",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 89.28",
+    "Title": "Computational Healthcare",
+    "Description": "reading, presenting, and discussing recently published Machine Learning (ML) lies at the core of a wide range of papers. Students will also propose and complete a term healthcare applications spanning from diagnosis to project to solve a video understanding problem. delivery of care. This course gives an overview of",
+    "Prerequisite": "COSC 78",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.31",
+    "Title": "Deep Learning Generalization and",
+    "Description": "Specifically, we will cover recent successes of natural Robustness language processing, time-series analysis, and transfer learning to advance healthcare research. Students will Instructor: Yang choose and complete a course project, write a project This course will be an extended version of COSC 78/278 report, and make project presentations at the end of the Deep Learning. It is mostly project-based, and it aims to course. The course also requires the students to analyze, bridge the gap between machine learning course materials present, and discuss research papers. and recent developments in machine learning research. The The course is open to graduate and ambitious course begins by covering the basics of model training and undergraduate students who are interested to gain hands-on inference. From there, the course proceeds to discuss experience in applied ML research. The course is designed various concepts of generalization, different types of to enable students to improve their technical robustness issues associated with generalization (e.g., communication and review skills and explore new research adversarial robustness, out-of-distribution robustness, directions. It is important to note that this course will be model poisoning, etc.), and the connections between conducted like a seminar (i.e. there are no formal lectures). (robust) generalization to the design of multiple We assume students are willing and able to learn some regularization and normalization strategies. necessary background materials on their own. There will",
+    "Prerequisite": "COSC 74/274",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.29",
+    "Title": "Music and Artificial Intelligence  Multi-modalities Generative AI, where students will",
+    "Description": "explore the convergence of multiple data modalities such This course explores artificial intelligence (AI) for creating as text, image, and audio to create sophisticated and and consuming music. Through weekly readings and expressive AI models. This course is divided into two exercises, students will create music and art with AI-based equally important components. The first half will consist of systems and develop the critical skills to evaluate the a lecture series that systematically covers fundamental outputs of creative AI. Starting with the history of concepts and technologies in generative AI. This segment algorithmic art and music, students will explore issues of aims to establish a solid theoretical foundation while digital music representation, generative music, facilitating hands-on learning through practical computational creativity, and AI-based music production. demonstrations with open-source examples. The second The goal is to generate original works using algorithms, half of the course will be an interactive reading group, such as neural networks. where students delve into influential papers and engage in",
+    "Prerequisite": "MUS008, CS001 or CS002  in-depth discussions. This segment is designed to foster",
+    "DegreeAttributes": "DIST:TAS; WCult:WC"
+  },
+  {
+    "CourseCode": "COSC 89.30",
+    "Title": "Topics in Video Understanding  Multi-modalities Generative AI. This project will provide",
+    "Description": "an opportunity to apply the acquired knowledge and skills, Instructor: Jin fostering creativity and innovation in the development of Video understanding is an area of research that helps multi-modal generative models. By combining a lecture machines understand video content by recognizing and series, engaging reading group discussions, and a practical localizing different actions or events appearing in a video. term project, this course aims to equip students with a Videos have multiple sensory information, including well-rounded understanding of multi-modal generative AI visual, acoustic, and meta information. This class is and the ability to contribute meaningfully to this rapidly designed to help students better understand recent trends in evolving field. DEPARTMENTS/PROGRAMS AND COURSES - UNDERGRADUATE| 229",
+    "Prerequisite": "COSC 78/278. This course assumes students  for all aspects of a software system, including iterative",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 89.33",
+    "Title": "The Dark Side of AI/ML: Machine  benefit to a user base.",
+    "Description": "Learning Security, Privacy, Fairness, and Open only to students pursuing a major in Computer Interpretability Science or a modified major with Computer Science as the The goal of this course is to equip students to responsibly primary part. 98.01 and 98.02 constitute a two course deploy machine learning tools in an unfair and adversarial sequence, and they must be taken in consecutive terms, world. We will survey the vulnerabilities of mainstream either fall/winter or winter/spring, normally in the senior machine learning models and algorithms to manipulation, year. privacy leakage, and unfairness. We will then assess the Students are awarded one course credit for successful conditions under which we can understand, interpret, or completion of this course upon completion of COSC-98.02 measure our models\u2019 predictions with respect to each of Students register for COSC-98.01 and receive a grade of these vulnerabilities. Finally, we will address the feasibility \u201cON\u201d (ongoing) at the end of the term. Students then and limitations of appropriate countermeasures. Our course register for COSC-98.02 the subsequent term to complete will build towards a final project assignment where the coursework. A final grade will replace the \u201cON\u201d in students are given the opportunity to develop their own COSC-98.01 upon completion of COSC-98.02. research projects in this emerging field.",
+    "Prerequisite": "At least two courses from COSC 50-69 or at",
+    "DegreeAttributes": "Dist:TAS"
+  },
+  {
+    "CourseCode": "COSC 91",
+    "Title": "Writing, Presenting, and Evaluating",
+    "Description": "Technical Papers in Computer Science Participation in a software engineering group project to meet a real-world need. Group members are responsible Students will learn how to write technical papers in for all aspects of a software system, including iterative computer science, how to present technical papers in a requirements analysis, design, implementation, and testing. conference-talk setting, and how program committees and The course also stresses customer interactions, journal editors evaluate technical papers. Writing topics documentation, process, and teamwork. The result is a include the proper use of technical typesetting software, software product of significant scope and significant organization of technical papers, and English usage. benefit to a user base. Students will write technical papers, produce official course notes, and give oral presentations. Enrollment Open only to students pursuing a major in Computer limited. Science or a modified major with Computer Science as the primary part. 98.01 and 98.02 constitute a two course",
+    "Prerequisite": "Each student must submit a short expository",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 94",
+    "Title": "Reading Course  coursework. A final grade will replace the \u201cON\u201d for",
+    "Description": "Advanced undergraduates occasionally arrange with a COSC-98.01 upon completion of this course for a total of 2 faculty member a reading course in a subject not occurring credits for COSC-98.01 and COSC-98.02. in regular courses.",
+    "Prerequisite": "COSC 98.01",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 98.01",
+    "Title": "Senior Design and Implementation  COSC 99.01 - Thesis Research I",
+    "Description": "Project I Individual research on a topic along with a thesis advisor. Instructor: Tregubov/Svoboda Permission of the Undergraduate Program Director and thesis advisor required. Open only to students pursuing a Participation in a software engineering group project to major in Computer Science or a modified major with meet a real-world need. Group members are responsible 230| DARTMOUTH COLLEGE ORGANIZATION, REGULATIONS, AND COURSES 2024-25 Computer Science as the primary part. COSC 99.01 and Studies), J. Smolin (COLT), N. Tanoukhi (English), M. 99.02 constitute a two-course sequence and must be taken Wyatt (French and Italian); in two consecutive terms, either fall/winter or winter/spring, normally in the senior year. In order to receive credit for COSC 99.01 and 99.02, a written thesis *Courses in Comparative Literature are designed to meet must be approved by the thesis advisor. A final grade will the needs of students whose literary interests are broader replace any \u2018ON\u2019 for COSC 99.01 and COSC 99.02 after than those that can be met by the curriculum of any single the faculty vote in the spring term. department.",
+    "Prerequisite": "",
+    "DegreeAttributes": ""
+  },
+  {
+    "CourseCode": "COSC 99.02",
+    "Title": "Thesis Research II  To view Comparative Literature Undergraduate courses,",
+    "Description": "click here. (p. 231) Individual research on a topic along with a thesis advisor. Permission of the Undergraduate Program Director and To view Comparative Literature Graduate requirements, thesis advisor required. Open only to students pursuing a click here. (p. 805) major in Computer Science or a modified major with To view Comparative Literature Graduate courses, click Computer Science as the primary part. COSC 99.01 and here. (p. 806) 99.02 constitute a two-course sequence and must be taken in two consecutive terms, either fall/winter or Requirements for the Major in Comparative winter/spring, normally in the senior year. In order to Literature receive credit for COSC 99.01 and 99.02, a written thesis Each student\u2019s major plan is designed individually around must be approved by the thesis advisor. A final grade will a particular focus of interest. Students planning to major in replace any \u2018ON\u2019 for COSC 99.01 and COSC 99.02 after Comparative Literature will normally enroll in an Honors the faculty vote in the spring term. Program, which entails writing a thesis (60 to 80 pages) during their senior year in COLT 85 and COLT",
+    "Prerequisite": "COSC 99.01",
+    "DegreeAttributes": ""
+  }
+]
