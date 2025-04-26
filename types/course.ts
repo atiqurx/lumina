@@ -5,3 +5,6 @@ export interface Course {
   prereqs: string[];
   description: string;
 }
+export interface CourseWithUid extends Course {
+  uid: string;
+}

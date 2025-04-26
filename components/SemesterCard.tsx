@@ -1,11 +1,7 @@
 "use client";
 
 import { useDroppable } from "@dnd-kit/core";
-import { Course } from "@/types/course";
-
-export interface CourseWithUid extends Course {
-  uid: string;
-}
+import { DraggableCourseCard, CourseWithUid } from "./DraggableCourseCard";
 
 export interface SemesterCardProps {
   semester: number;
@@ -29,19 +25,11 @@ export function SemesterCard({ semester, courses = [] }: SemesterCardProps) {
       <h2 className="font-semibold mb-2 text-[var(--primary)]">
         Semester {semester}
       </h2>
-      <div className="flex-1 overflow-y-auto space-y-2">
-        {courses.map((c) => (
-          <div
-            key={c.uid}
-            className="
-              p-2 bg-[var(--secondary)] text-[var(--secondary-foreground)]
-              rounded
-            "
-          >
-            {c.code}
-          </div>
+      <ul className="flex-1 overflow-y-auto space-y-3">
+        {courses.map((course) => (
+          <DraggableCourseCard key={course.uid} course={course} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
