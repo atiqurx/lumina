@@ -1,28 +1,80 @@
 // components/AdvisorChat.tsx
 "use client";
-import { useState } from "react";
 
-export function AdvisorChat() {
+import { useState, useEffect } from "react";
+
+export function AdvisorChat({
+  conversationId: propConversationId,
+}: {
+  conversationId: string | null;
+}) {
   const [history, setHistory] = useState<{ user: string; bot: string }[]>([]);
   const [input, setInput] = useState("");
+  const [userId, setUserId] = useState<string | null>(null);
+  const [conversationId, setConversationId] = useState<string | null>(
+    propConversationId
+  );
+
+  // load userId once
+  useEffect(() => {
+    setUserId(localStorage.getItem("luminaUserId"));
+  }, []);
+
+  // whenever propConversationId changes, fetch its messages
+  useEffect(() => {
+    setConversationId(propConversationId);
+    if (!propConversationId) {
+      setHistory([]);
+      return;
+    }
+
+    (async () => {
+      try {
+        const res = await fetch(`/api/chat-history/${propConversationId}`);
+        const data = await res.json();
+        // map the raw history into your UI shape
+        setHistory(
+          (data.history || []).map((m: any) => ({
+            user: m.role === "user" ? m.message : "",
+            bot: m.role === "bot" ? m.message : "",
+          }))
+        );
+      } catch (err) {
+        console.error("Failed to load conversation:", err);
+        setHistory([]);
+      }
+    })();
+  }, [propConversationId]);
 
   async function send() {
     const question = input.trim();
-    if (!question) return;
-    setInput("");
+    if (!question || !userId) return;
 
-    // add user message
+    setInput("");
+    // show placeholder
     setHistory((h) => [...h, { user: question, bot: "..." }]);
 
-    // call our API
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ userId, question, conversationId }),
     });
-    const { answer } = await res.json();
+    const text = await res.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.error("Invalid JSON from chat API:", text);
+      data = {};
+    }
 
-    // replace last placeholder
+    // capture new conversationId if first message
+    if (data.conversationId) {
+      setConversationId(data.conversationId);
+    }
+    const answer = data.answer || "⚠️ No answer";
+
+    // update last placeholder
     setHistory((h) => {
       const copy = [...h];
       copy[copy.length - 1].bot = answer;
@@ -31,28 +83,40 @@ export function AdvisorChat() {
   }
 
   return (
-    <div className="p-4 space-y-4">
-      <div className="space-y-2 max-h-80 overflow-auto">
+    <div className="flex flex-col h-full">
+      {/* messages */}
+      <div className="flex-1 overflow-auto p-4 space-y-4">
         {history.map((msg, i) => (
           <div key={i}>
-            <p>
-              <strong>You:</strong> {msg.user}
-            </p>
-            <p>
-              <strong>Advisor:</strong> {msg.bot}
-            </p>
+            {msg.user && (
+              <p>
+                <strong>You:</strong> {msg.user}
+              </p>
+            )}
+            {msg.bot && (
+              <p>
+                <strong>Advisor:</strong> {msg.bot}
+              </p>
+            )}
           </div>
         ))}
       </div>
-      <div className="flex">
+
+      {/* input */}
+      <div className="p-4 border-t flex">
         <input
-          className="flex-grow border p-2"
+          className="flex-grow border p-2 mr-2 disabled:opacity-50"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask about COSC 32, prerequisites, etc."
           onKeyDown={(e) => e.key === "Enter" && send()}
+          disabled={!userId}
+          placeholder={userId ? "Type your question…" : "Loading…"}
         />
-        <button className="ml-2 px-4 bg-blue-600 text-white" onClick={send}>
+        <button
+          className="px-4 bg-blue-600 text-white disabled:opacity-50"
+          onClick={send}
+          disabled={!userId || !input.trim()}
+        >
           Send
         </button>
       </div>

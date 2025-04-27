@@ -1,17 +1,37 @@
-// app/dashboard/page.tsx
-import { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
+import { ChatHistoryList } from "@/components/ChatHistoryList";
 import { AdvisorChat } from "@/components/AdvisorChat";
 
-export const metadata: Metadata = {
-  title: "Dashboard – AI Academic Advisor",
-  description: "Ask questions about your Dartmouth CS degree plan",
-};
-
 export default function DashboardPage() {
+  const [conversationId, setConversationId] = useState<string | null>(null);
+
   return (
-    <main className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">AI Academic Advisor</h1>
-      <AdvisorChat />
-    </main>
+    <div className="flex h-screen bg-gray-50">
+      {/* History Column */}
+      <aside className="w-64 bg-white border-r">
+        <div className="p-4 flex justify-between items-center border-b">
+          <h2 className="font-semibold">History</h2>
+          <button
+            onClick={() => setConversationId(null)}
+            className="text-sm text-white bg-green-600 hover:bg-green-700 px-2 py-1 rounded"
+          >
+            New
+          </button>
+        </div>
+        <ChatHistoryList onSelect={setConversationId} />
+      </aside>
+
+      {/* Chat Column */}
+      <main className="flex-1 flex flex-col">
+        <header className="p-4 border-b">
+          <h1 className="text-2xl font-bold">AI Academic Advisor</h1>
+        </header>
+        <div className="flex-1">
+          <AdvisorChat conversationId={conversationId} />
+        </div>
+      </main>
+    </div>
   );
 }
