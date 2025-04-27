@@ -1,7 +1,7 @@
 "use client";
 
 import { useDraggable } from "@dnd-kit/core";
-import { GripHorizontal } from "lucide-react";
+import { GripHorizontal, AlertTriangle } from "lucide-react";
 import {
   Popover,
   PopoverTrigger,
@@ -9,25 +9,24 @@ import {
 } from "@/components/ui/popover";
 import { Course } from "@/types/course";
 
-// Extend Course with a unique ID
 export interface CourseWithUid extends Course {
   uid: string;
 }
 
 interface DraggableCourseCardProps {
   course: CourseWithUid;
+  // list of codes missing for prereqs
+  missingPrereqs?: string[];
 }
 
-/**
- * A card that is both draggable (via dnd-kit) and clickable (opens a shadcn Popover).
- * Used in the Sidebar, in each SemesterCard, and as the DragOverlay preview.
- */
-export function DraggableCourseCard({ course }: DraggableCourseCardProps) {
-  // hook into dnd-kit
+export function DraggableCourseCard({
+  course,
+  missingPrereqs = [],
+}: DraggableCourseCardProps) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({ id: course.uid });
 
-  // drop the dynamic aria-describedby to avoid hydration mismatches
+  // drop dynamic aria-describedby
   const { "aria-describedby": _ignore, ...cleanAttrs } = attributes;
 
   const style: React.CSSProperties = {
@@ -47,19 +46,50 @@ export function DraggableCourseCard({ course }: DraggableCourseCardProps) {
             {...cleanAttrs}
             {...listeners}
             className={`
-              flex items-center gap-3 p-3 rounded-lg border
+              group flex items-center justify-between gap-3 p-3 rounded-lg border
               bg-white shadow-sm hover:shadow-md transition-shadow
-              cursor-grab select-none
-              ${isDragging ? "opacity-75 cursor-grabbing" : "opacity-100"}
+              ${
+                isDragging
+                  ? "opacity-75 cursor-grabbing"
+                  : "opacity-100 cursor-grab"
+              }
             `}
           >
-            <GripHorizontal className="w-5 h-5 text-orange-500 opacity-50 group-hover:opacity-80" />
-            <div>
-              <div className="font-semibold text-orange-600">{course.code}</div>
-              <div className="text-sm text-gray-600">{course.title}</div>
+            <div className="flex items-center gap-3">
+              <GripHorizontal className="w-5 h-5 text-orange-500 opacity-50 group-hover:opacity-80" />
+              <div>
+                <div className="font-semibold text-orange-600">
+                  {course.code}
+                </div>
+                <div className="text-sm text-gray-600">{course.title}</div>
+              </div>
             </div>
+
+            {/* Warning icon if any prereqs are missing */}
+            {missingPrereqs.length > 0 && (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <AlertTriangle
+                    className="w-5 h-5 text-red-500 cursor-pointer"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </PopoverTrigger>
+                <PopoverContent className="w-48">
+                  <h4 className="font-semibold mb-1 text-red-600">
+                    Missing Prereqs
+                  </h4>
+                  <ul className="ml-2 list-disc text-sm">
+                    {missingPrereqs.map((pr) => (
+                      <li key={pr}>{pr}</li>
+                    ))}
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            )}
           </div>
         </PopoverTrigger>
+
+        {/* Course detail popover on clicking anywhere else */}
         <PopoverContent align="start" className="w-64">
           <h3 className="font-semibold mb-2">
             {course.code}: {course.title}
