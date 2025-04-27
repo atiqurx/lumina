@@ -1,188 +1,102 @@
+// app/dashboard/page.tsx
 "use client";
 
 import React, { useState } from "react";
 import {
-  SidebarProvider,
-  Sidebar,
-  SidebarHeader,
-  SidebarRail,
-  SidebarContent,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarFooter,
-} from "@/components/ui/sidebar";
-import {
-  Home,
-  BookOpen,
   MessageCircle,
-  Bell,
-  Settings,
-  User,
+  LayoutGrid,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { AdvisorChat } from "@/components/AdvisorChat";
+import { ChatHistoryList } from "@/components/ChatHistoryList";
+import DegreePlannerPage from "@/app/degree-planner/page";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Dashboard() {
-  const [page, setPage] = useState<
-    "home" | "courses" | "ai" | "notifications" | "settings" | "profile"
-  >("home");
+  const [page, setPage] = useState<"chat" | "planner">("chat");
+  const [collapsed, setCollapsed] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
 
   return (
-    <SidebarProvider>
-      <div className="flex h-screen bg-gray-100">
-        {/* Sidebar */}
-        <Sidebar side="left" variant="sidebar" collapsible="icon">
-          <SidebarHeader>
-            <h2 className="text-2xl font-bold text-[#00693E]">Dartmouth AI</h2>
-          </SidebarHeader>
-
-          <SidebarContent>
-            <SidebarMenu>
-              {/* Home */}
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={page === "home"}
-                  asChild
-                  onClick={() => setPage("home")}
-                >
-                  <a className="flex items-center gap-2">
-                    <Home /> Home
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              {/* Courses */}
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={page === "courses"}
-                  asChild
-                  onClick={() => setPage("courses")}
-                >
-                  <a className="flex items-center gap-2">
-                    <BookOpen /> Courses
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              {/* Advisor Chat */}
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={page === "ai"}
-                  asChild
-                  onClick={() => setPage("ai")}
-                >
-                  <a className="flex items-center gap-2">
-                    <MessageCircle /> AI Chatbot
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              {/* Notifications */}
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={page === "notifications"}
-                  asChild
-                  onClick={() => setPage("notifications")}
-                >
-                  <a className="flex items-center gap-2">
-                    <Bell /> Notifications
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              {/* Settings */}
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={page === "settings"}
-                  asChild
-                  onClick={() => setPage("settings")}
-                >
-                  <a className="flex items-center gap-2">
-                    <Settings /> Settings
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-
-              {/* Profile */}
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={page === "profile"}
-                  asChild
-                  onClick={() => setPage("profile")}
-                >
-                  <a className="flex items-center gap-2">
-                    <User /> Profile
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarContent>
-
-          <SidebarFooter>
-            <p className="text-xs text-sidebar-foreground/70 p-2">
-              Logged in as Student
-            </p>
-          </SidebarFooter>
-
-          {/* Rail toggle */}
-          <SidebarRail />
-        </Sidebar>
-
-        {/* Main Content */}
-        <main className="flex-1 p-6 overflow-y-auto">
-          {page === "home" && (
-            <section>
-              <h1 className="text-3xl font-bold text-[#00693E] mb-4">Home</h1>
-              <p>Welcome to your dashboard. Overview of your academic path.</p>
-            </section>
+    <div className="flex h-screen bg-gray-50">
+      {/* Custom Sidebar */}
+      <aside
+        className={`flex flex-col bg-white border-r transition-width duration-300 ease-in-out ${
+          collapsed ? "w-16" : "w-64"
+        }`}
+      >
+        {/* Logo & Toggle */}
+        <div className="flex items-center justify-between h-16 px-4">
+          {!collapsed && (
+            <h2 className="text-xl font-bold text-[#00693E]">Lumina</h2>
           )}
+          <button
+            className="p-1 rounded hover:bg-gray-200"
+            onClick={() => setCollapsed(!collapsed)}
+            aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {collapsed ? <ChevronRight /> : <ChevronLeft />}
+          </button>
+        </div>
 
-          {page === "courses" && (
-            <section>
-              <h1 className="text-3xl font-bold text-[#00693E] mb-4">
-                Courses
-              </h1>
-              <p>View and manage your enrolled courses here.</p>
-            </section>
-          )}
+        {/* Menu Items */}
+        <nav className="flex-1 px-2 space-y-1">
+          <button
+            className={`flex items-center w-full px-3 py-2 rounded hover:bg-gray-100 ${
+              page === "chat" ? "bg-gray-200" : ""
+            }`}
+            onClick={() => setPage("chat")}
+          >
+            <MessageCircle className="w-5 h-5 text-[#00693E]" />
+            {!collapsed && <span className="ml-3">Chat</span>}
+          </button>
 
-          {page === "ai" && (
-            <section>
-              <h1 className="text-3xl font-bold text-[#00693E] mb-4">
-                AI Chatbot
-              </h1>
-              <AdvisorChat />
-            </section>
-          )}
+          <button
+            className={`flex items-center w-full px-3 py-2 rounded hover:bg-gray-100 ${
+              page === "planner" ? "bg-gray-200" : ""
+            }`}
+            onClick={() => setPage("planner")}
+          >
+            <LayoutGrid className="w-5 h-5 text-[#00693E]" />
+            {!collapsed && <span className="ml-3">Planner</span>}
+          </button>
+        </nav>
 
-          {page === "notifications" && (
-            <section>
-              <h1 className="text-3xl font-bold text-[#00693E] mb-4">
-                Notifications
-              </h1>
-              <p>Check your latest alerts and messages.</p>
-            </section>
-          )}
+        {/* Logout / Profile */}
+        <div className="p-4">
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      </aside>
 
-          {page === "settings" && (
-            <section>
-              <h1 className="text-3xl font-bold text-[#00693E] mb-4">
-                Settings
-              </h1>
-              <p>Configure your account preferences here.</p>
-            </section>
-          )}
+      {/* Main Content */}
+      <main className="flex flex-col flex-1 overflow-hidden">
+        <header className="flex items-center justify-between px-6 py-4 border-b bg-white">
+          <h1 className="text-2xl font-semibold text-gray-800">
+            {page === "chat" ? "AI Chatbot" : "Degree Planner"}
+          </h1>
+        </header>
 
-          {page === "profile" && (
-            <section>
-              <h1 className="text-3xl font-bold text-[#00693E] mb-4">
-                Profile
-              </h1>
-              <p>View and edit your profile information.</p>
-            </section>
+        <div className="flex-1 flex overflow-hidden bg-gray-50">
+          {page === "chat" ? (
+            <>
+              {/* Chat History Panel */}
+              <div className="w-1/4 border-r overflow-auto">
+                <ChatHistoryList onSelect={setConversationId} />
+              </div>
+
+              {/* Chat Window */}
+              <div className="flex-1 p-4 flex flex-col">
+                <AdvisorChat conversationId={conversationId} />
+              </div>
+            </>
+          ) : (
+            <div className="flex-1 overflow-auto">
+              <DegreePlannerPage />
+            </div>
           )}
-        </main>
-      </div>
-    </SidebarProvider>
+        </div>
+      </main>
+    </div>
   );
 }
