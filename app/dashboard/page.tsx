@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 "use client";
 
 import { useState, useMemo } from "react";
@@ -14,10 +13,8 @@ import {
 
 import { Sidebar } from "@/components/Sidebar";
 import { SemesterCard } from "@/components/SemesterCard";
-import {
-  DraggableCourseCard,
-  CourseWithUid,
-} from "@/components/DraggableCourseCard";
+import { DraggableCourseItem } from "@/components/DraggableCourseItem";
+import { CourseWithUid } from "@/components/DraggableCourseCard";
 import { Course } from "@/types/course";
 import catalog from "@/catalog.json";
 
@@ -85,7 +82,7 @@ export default function DashboardPage() {
   }, [assignments]);
 
   const unassigned = ALL_COURSES.filter((c) => !(c.uid in assignments));
-  const semesters = Array.from({ length: 8 }, (_, i) => i + 1);
+  const semesters = Array.from({ length: 12 }, (_, i) => i + 1);
   const activeCourse = activeId
     ? ALL_COURSES.find((c) => c.uid === activeId)
     : null;
@@ -96,20 +93,24 @@ export default function DashboardPage() {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex h-screen">
-        <aside className="w-1/4 border-r p-4 overflow-y-auto">
+      <div className="flex h-screen bg-gray-50">
+        <aside className="w-80 border-r border-gray-200 overflow-hidden flex flex-col">
           <Sidebar courses={unassigned} />
         </aside>
 
-        {/* flex-wrap instead of grid */}
-        <main className="flex-1 p-6 flex flex-wrap gap-4 overflow-auto">
-          {semesters.map((sem) => {
-            const semCourses = ALL_COURSES.filter(
-              (c) => assignments[c.uid] === sem
-            );
-            return (
-              <div key={sem} className="w-1/4">
+        <main className="flex-1 p-6 overflow-auto">
+          <h1 className="text-xl font-semibold text-[#FF7D3B] mb-6">
+            Course Plan
+          </h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {semesters.map((sem) => {
+              const semCourses = ALL_COURSES.filter(
+                (c) => assignments[c.uid] === sem
+              );
+              return (
                 <SemesterCard
+                  key={sem}
                   semester={sem}
                   courses={semCourses}
                   missingPrereqsMap={missingPrereqsMap}
@@ -122,14 +123,16 @@ export default function DashboardPage() {
                     setCourseLocks((p) => ({ ...p, [uid]: !p[uid] }))
                   }
                 />
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </main>
       </div>
 
       <DragOverlay>
-        {activeCourse && <DraggableCourseCard course={activeCourse} />}
+        {activeCourse && (
+          <DraggableCourseItem course={activeCourse} showIcons={false} />
+        )}
       </DragOverlay>
     </DndContext>
   );
