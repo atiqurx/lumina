@@ -1,31 +1,37 @@
-// app/api/chat/route.ts
+export const runtime = 'nodejs';
+
 import { NextResponse } from "next/server";
 import courses from "@data/dartmouth_courses.json";
+import connect from '@/lib/mongodb';
+import ChatHistory from '@/lib/models/ChatHistory';
+import Conversation from '@/lib/models/Conversation';
 
 export async function POST(request: Request) {
   try {
-    const { question } = await request.json();
+    // 1) Parse input (expect question and userId)
+    const { question, userId } = await request.json();
+    if (!question || !userId) {
+      return NextResponse.json({ answer: "Missing question or userId" }, { status: 400 });
+    }
 
-    // 1) Build a small catalog context
+    // 2) Build catalog context for Gemini
     const context = JSON.stringify(courses.slice(0, 100), null, 2);
     const promptText = `
-You are a friendly academic advisor for Dartmouth CS students. Use this catalog excerpt to answer concisely:
+You are a friendly academic advisor for University of Texas at Arlington CS students. Use this catalog excerpt to answer concisely:
 ${context}
 
 Student: "${question}"
 Advisor:
 `;
 
-    // 2) Call Gemini 2.0 Flash
+    // 3) Call Gemini 2.0 Flash
     const apiKey = process.env.GOOGLE_API_KEY!;
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
     const resp = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [
-          { parts: [{ text: promptText }] }
-        ]
+        contents: [{ parts: [{ text: promptText }] }]
       }),
     });
 
@@ -38,15 +44,30 @@ Advisor:
       );
     }
 
-    // 3) Parse the JSON
+    // 4) Parse the JSON response
     const payload = await resp.json();
-    console.log("💬 Gemini payload:", payload);
-
-    // 4) Extract the assistant’s text
     const answer =
       payload.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
       "I’m sorry, I don’t know.";
 
+    // 5) Persist to MongoDB
+    await connect();
+    // find or create chat history for this user
+    let hist = await ChatHistory.findOne({ user: userId });
+    if (!hist) {
+      hist = await ChatHistory.create({ user: userId, convos: [] });
+    }
+    // create a conversation document
+    const convo = await Conversation.create({
+      history: [
+        { role: 'user', message: question },
+        { role: 'bot', message: answer }
+      ]
+    });
+    hist.convos.push(convo._id);
+    await hist.save();
+
+    // 6) Return the answer
     return NextResponse.json({ answer });
   } catch (err) {
     console.error("🚨 /api/chat error:", err);

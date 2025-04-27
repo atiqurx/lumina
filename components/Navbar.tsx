@@ -45,7 +45,7 @@ export default function Navbar() {
                   Sign In
                 </button>
               </SignInButton>
-              <SignUpButton mode="modal">
+              <SignUpButton mode="redirect">
                 <button className="px-4 py-2 rounded-md text-sm font-medium bg-white text-teal-800 hover:bg-gray-100 transition">
                   Sign Up
                 </button>
