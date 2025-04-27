@@ -14,6 +14,7 @@ import {
 import { Sidebar } from "@/components/Sidebar";
 import { SemesterCard } from "@/components/SemesterCard";
 import { DraggableCourseItem } from "@/components/DraggableCourseItem";
+import { ChatSidebar } from "@/components/ChatSidebar";
 import { CourseWithUid } from "@/components/DraggableCourseCard";
 import { Course } from "@/types/course";
 import catalog from "@/catalog.json";
@@ -39,6 +40,7 @@ export default function DegreePlannerPage() {
   function handleDragStart(e: DragStartEvent) {
     setActiveId(e.active.id as string);
   }
+
   function handleDragEnd(e: DragEndEvent) {
     const { active, over } = e;
     if (!over) {
@@ -82,7 +84,7 @@ export default function DegreePlannerPage() {
   }, [assignments]);
 
   const unassigned = ALL_COURSES.filter((c) => !(c.uid in assignments));
-  const semesters = Array.from({ length: 12 }, (_, i) => i + 1);
+  const semesters = Array.from({ length: 15 }, (_, i) => i + 1);
   const activeCourse = activeId
     ? ALL_COURSES.find((c) => c.uid === activeId)
     : null;
@@ -94,15 +96,16 @@ export default function DegreePlannerPage() {
       onDragEnd={handleDragEnd}
     >
       <div className="flex h-screen bg-gray-50">
+        {/* Left: Catalog Sidebar */}
         <aside className="w-80 border-r border-gray-200 overflow-hidden flex flex-col">
           <Sidebar courses={unassigned} />
         </aside>
 
+        {/* Middle: Degree Planner */}
         <main className="flex-1 p-6 overflow-auto">
           <h1 className="text-xl font-semibold text-[#FF7D3B] mb-6">
             Course Plan
           </h1>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {semesters.map((sem) => {
               const semCourses = ALL_COURSES.filter(
@@ -127,8 +130,17 @@ export default function DegreePlannerPage() {
             })}
           </div>
         </main>
+
+        {/* Right: AI Chat Sidebar */}
+        <aside className="w-80 border-l border-gray-200 overflow-hidden flex flex-col">
+          <ChatSidebar
+            catalog={ALL_COURSES} // pass the full list, including uid
+            assignments={assignments} // pass the live map
+          />
+        </aside>
       </div>
 
+      {/* Drag preview overlay */}
       <DragOverlay>
         {activeCourse && (
           <DraggableCourseItem course={activeCourse} showIcons={false} />
