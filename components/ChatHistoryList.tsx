@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 type HistoryItem = {
   id: string;
-  updatedAt: string;
+  snippet: string;
 };
 
 export function ChatHistoryList({
@@ -44,7 +44,6 @@ export function ChatHistoryList({
   if (loading) {
     return <div className="p-4">Loading…</div>;
   }
-
   if (items.length === 0) {
     return <div className="p-4 text-gray-500">No history yet.</div>;
   }
@@ -57,10 +56,7 @@ export function ChatHistoryList({
           onClick={() => onSelect(h.id)}
           className="block w-full text-left py-2 px-3 hover:bg-gray-100 rounded"
         >
-          <div className="font-medium">Conversation {h.id.slice(-6)}</div>
-          <div className="text-xs text-gray-500">
-            {new Date(h.updatedAt).toLocaleString()}
-          </div>
+          <div className="font-medium">{h.snippet}</div>
         </button>
       ))}
     </div>
