@@ -102,7 +102,7 @@ ${planLines.length ? planLines.join("\n") : "(none yet)"}
       return;
     }
 
-    // ➋ Otherwise: regular AI-advisor flow
+    // Otherwise: regular AI-advisor flow
     const systemPrompt: Message = {
       role: "system",
       content: `
