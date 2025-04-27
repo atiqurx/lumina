@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 import {
   DndContext,
   DragOverlay,
@@ -26,12 +27,42 @@ const ALL_COURSES = (catalog as Course[]).map((c, i) => ({
 })) as CourseWithUid[];
 
 export default function DegreePlannerPage() {
+  const { user, isLoaded } = useUser();
   const [assignments, setAssignments] = useState<Record<string, number>>({});
   const [semesterLocks, setSemesterLocks] = useState<Record<number, boolean>>(
     {}
   );
   const [courseLocks, setCourseLocks] = useState<Record<string, boolean>>({});
   const [activeId, setActiveId] = useState<string | null>(null);
+
+  // ➊ On mount, fetch saved plan
+  useEffect(() => {
+    if (!isLoaded || !user) return;
+    fetch(`/api/degree-plan?userId=${user.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const sems = data.plan?.sems as
+          | { semNumber: number; courses: string[] }[]
+          | undefined;
+        if (!sems) return;
+        const loaded: Record<string, number> = {};
+        sems.forEach(({ semNumber, courses }) => {
+          courses.forEach((code) => {
+            const course = ALL_COURSES.find((c) => c.code === code);
+            if (course) {
+              loaded[course.uid] = semNumber;
+            }
+          });
+        });
+        setAssignments(loaded);
+      })
+      .catch(console.error);
+  }, [isLoaded, user]);
+
+  // log whenever assignments change
+  useEffect(() => {
+    console.log("🗺️ assignments:", assignments);
+  }, [assignments]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
@@ -51,15 +82,15 @@ export default function DegreePlannerPage() {
     const dest = over.id as string;
 
     if (dest === "sidebar") {
-      setAssignments((p) => {
-        const n = { ...p };
-        delete n[uid];
-        return n;
+      setAssignments((prev) => {
+        const next = { ...prev };
+        delete next[uid];
+        return next;
       });
     } else if (dest.startsWith("semester-")) {
       const sem = Number(dest.split("-")[1]);
       if (!semesterLocks[sem] && !courseLocks[uid]) {
-        setAssignments((p) => ({ ...p, [uid]: sem }));
+        setAssignments((prev) => ({ ...prev, [uid]: sem }));
       }
     }
     setActiveId(null);
@@ -89,6 +120,26 @@ export default function DegreePlannerPage() {
     ? ALL_COURSES.find((c) => c.uid === activeId)
     : null;
 
+  // ➋ Save handler
+  const handleSave = async () => {
+    if (!user) return alert("You must be signed in to save your plan");
+    try {
+      const res = await fetch("/api/degree-plan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: user.id,
+          assignments,
+        }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      alert("✅ Plan saved!");
+    } catch (err: any) {
+      console.error(err);
+      alert("❌ Failed to save plan: " + err.message);
+    }
+  };
+
   return (
     <DndContext
       sensors={sensors}
@@ -96,16 +147,26 @@ export default function DegreePlannerPage() {
       onDragEnd={handleDragEnd}
     >
       <div className="flex h-screen bg-gray-50">
-        {/* Left: Catalog Sidebar (collapsible width handled internally) */}
+        {/* Left: Catalog Sidebar */}
         <aside className="flex-none border-r border-gray-200 overflow-hidden flex flex-col">
           <Sidebar courses={unassigned} />
         </aside>
 
         {/* Middle: Degree Planner */}
         <main className="flex-1 p-6 overflow-auto">
-          <h1 className="text-xl font-semibold text-[#213448] mb-6">
-            Course Plan
-          </h1>
+          {/* Header with Save */}
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-xl font-semibold text-[#213448]">
+              Course Plan
+            </h1>
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-[#FF7D3B] text-white rounded hover:bg-[#e66c29] transition"
+            >
+              Save
+            </button>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {semesters.map((sem) => {
               const semCourses = ALL_COURSES.filter(
@@ -119,11 +180,17 @@ export default function DegreePlannerPage() {
                   missingPrereqsMap={missingPrereqsMap}
                   semesterLocked={!!semesterLocks[sem]}
                   onToggleSemesterLock={() =>
-                    setSemesterLocks((p) => ({ ...p, [sem]: !p[sem] }))
+                    setSemesterLocks((prev) => ({
+                      ...prev,
+                      [sem]: !prev[sem],
+                    }))
                   }
                   courseLocks={courseLocks}
                   onToggleCourseLock={(uid) =>
-                    setCourseLocks((p) => ({ ...p, [uid]: !p[uid] }))
+                    setCourseLocks((prev) => ({
+                      ...prev,
+                      [uid]: !prev[uid],
+                    }))
                   }
                 />
               );
