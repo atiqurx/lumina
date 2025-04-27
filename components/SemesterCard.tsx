@@ -1,10 +1,10 @@
+// components/SemesterCard.tsx
 "use client";
 
 import { useDroppable } from "@dnd-kit/core";
 import { Lock, Unlock, AlertTriangle } from "lucide-react";
 import { CourseWithUid } from "./DraggableCourseCard";
 import { DraggableCourseItem } from "./DraggableCourseItem";
-import { theme } from "./ui/theme";
 
 export interface SemesterCardProps {
   semester: number;
@@ -30,13 +30,19 @@ export function SemesterCard({
     disabled: semesterLocked,
   });
 
+  // hard-coded start year
+  const START_YEAR = 2022;
+  const TERM_NAMES = ["Fall", "Spring", "Summer"];
+  const idx = semester - 1;
+  const term = TERM_NAMES[idx % 3];
+  // ⚡️ bump year for Spring/Summer and the next Fall
+  const year = START_YEAR + Math.floor((idx + 2) / 3);
+  const label = `${term} ${year}`;
+
   const totalCredits = courses.reduce((sum, c) => sum + c.credits, 0);
-  const year = Math.ceil(semester / 3);
-  const terms = ["Fall", "Spring", "Summer"];
-  const term = terms[(semester - 1) % 3];
   const hasWarnings = courses.some((c) => missingPrereqsMap[c.uid]?.length > 0);
 
-  // Calculate credit status
+  // credit status styling...
   let creditStatus = "optimal";
   if (totalCredits > 18) creditStatus = "overload";
   else if (totalCredits < 12) creditStatus = "underload";
@@ -45,7 +51,7 @@ export function SemesterCard({
     <div
       ref={setNodeRef}
       className={`
-        relative flex flex-col h-full
+        relative flex flex-col min-h-[12rem] h-full
         ${semesterLocked ? "opacity-90" : ""}
         ${isOver && !semesterLocked ? "ring-2 ring-[#FF7D3B]" : ""}
       `}
@@ -53,56 +59,51 @@ export function SemesterCard({
       {/* Header */}
       <div
         className={`
-        p-3 rounded-t-lg flex justify-between items-center
-        ${semesterLocked ? "bg-gray-100" : "bg-[#FFF0E8]"}
-        ${hasWarnings ? "border-b-2 border-[#FFCDB2]" : ""}
-      `}
-      >
-        <div className="flex items-center gap-2">
-          <div>
-            <div className="flex items-center gap-1">
-              <h2 className="font-medium text-gray-800">
-                {term} {year}
-              </h2>
-              <button
-                onClick={onToggleSemesterLock}
-                className="p-1 hover:bg-[#FFE8D9] rounded-full transition-colors"
-                title={semesterLocked ? "Unlock semester" : "Lock semester"}
-              >
-                {semesterLocked ? (
-                  <Lock className="w-3.5 h-3.5 text-gray-500" />
-                ) : (
-                  <Unlock className="w-3.5 h-3.5 text-gray-500" />
-                )}
-              </button>
-            </div>
-            <div className="text-xs text-gray-500">Semester {semester}</div>
-          </div>
-        </div>
-
-        <div
-          className={`
-          text-xs font-medium px-2 py-1 rounded-full
-          ${
-            creditStatus === "optimal"
-              ? "bg-[#E6F7EB] text-[#2E7D42]"
-              : creditStatus === "underload"
-              ? "bg-[#FFF8E6] text-[#B78103]"
-              : "bg-[#FFEBE7] text-[#D03A16]"
-          }
+          p-3 rounded-t-lg flex justify-between items-center
+          ${semesterLocked ? "bg-gray-300" : "bg-[#94B4C1]/20"}
+          ${hasWarnings ? "border-b-2 border-[#FFCDB2]" : ""}
         `}
-        >
-          {totalCredits} credits
+      >
+        <div>
+          <div className="flex items-center gap-2">
+            <h2 className="font-medium text-gray-800">{label}</h2>
+            <button
+              onClick={onToggleSemesterLock}
+              className="p-1 hover:bg-[#94B4C1]/40 rounded-full transition-colors"
+              title={semesterLocked ? "Unlock semester" : "Lock semester"}
+            >
+              {semesterLocked ? (
+                <Lock className="w-4 h-4 text-gray-500" />
+              ) : (
+                <Unlock className="w-4 h-4 text-gray-500" />
+              )}
+            </button>
+          </div>
+          {/* <div className="text-xs text-gray-500">Semester {semester}</div> */}
+          <span
+            className={`
+            text-xs font-medium px-2 py-1 rounded-full
+            ${
+              creditStatus === "optimal"
+                ? "bg-[#E6F7EB] text-[#2E7D42]"
+                : creditStatus === "underload"
+                ? "bg-[#FFF8E6] text-[#B78103]"
+                : "bg-[#FFEBE7] text-[#D03A16]"
+            }
+          `}
+          >
+            {totalCredits} credits
+          </span>
         </div>
       </div>
 
-      {/* Course list */}
+      {/* Course list... unchanged */}
       <div
         className={`
-        flex-1 p-3 border border-t-0 rounded-b-lg
-        ${semesterLocked ? "bg-gray-50" : "bg-white"}
-        ${isOver && !semesterLocked ? "bg-[#FFF9F5]" : ""}
-      `}
+          flex-1 p-3 border border-t-0 rounded-b-lg
+          ${semesterLocked ? "bg-gray-50" : "bg-white"}
+          ${isOver && !semesterLocked ? "bg-[#FFF9F5]" : ""}
+        `}
       >
         {courses.length === 0 ? (
           <div className="flex items-center justify-center h-full text-sm text-gray-400 italic">

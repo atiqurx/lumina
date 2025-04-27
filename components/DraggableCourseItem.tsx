@@ -81,7 +81,7 @@ export function DraggableCourseItem({
               />
 
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-[#FF7D3B] truncate">
+                <div className="font-medium text-[#102E50] truncate">
                   {course.code}
                 </div>
                 <div className="text-sm text-gray-600 truncate">
@@ -89,8 +89,8 @@ export function DraggableCourseItem({
                 </div>
 
                 <div className="mt-1 flex items-center">
-                  <span className="text-xs px-2 py-0.5 bg-[#FFF0E8] text-[#FF7D3B] rounded-full">
-                    {course.credits} cr
+                  <span className="text-xs px-2 py-0.5 bg-[#FF7D3B] text-[#ffffff] rounded-full">
+                    {course.credits} Credits
                   </span>
 
                   {course.prereqs.length > 0 && (
@@ -112,7 +112,7 @@ export function DraggableCourseItem({
         </PopoverTrigger>
 
         <PopoverContent align="start" className="w-72 p-4 shadow-lg">
-          <h3 className="font-semibold text-lg text-[#FF7D3B] mb-3">
+          <h3 className="font-semibold text-lg text-[#102E50] mb-3">
             {course.code}
           </h3>
           <h4 className="font-medium text-gray-800 mb-2">{course.title}</h4>
@@ -120,7 +120,7 @@ export function DraggableCourseItem({
           <p className="text-sm text-gray-700 mb-3">{course.description}</p>
 
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-medium px-2 py-1 bg-[#FFF0E8] text-[#FF7D3B] rounded-full">
+            <span className="text-xs font-medium px-2 py-1 bg-[#FF7D3B] text-[#ffffff] rounded-full">
               {course.credits} Credits
             </span>
           </div>
