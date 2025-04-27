@@ -12,6 +12,7 @@ export interface CourseWithUid {
   prereqs: string[];
 }
 
+// Detect "professor X" or "prof X" or "Dr. X"
 function isProfessorQuery(text: string) {
   return /\b(?:professor|prof|dr\.)\s+([A-Za-z]+\s?[A-Za-z]*)/i.test(text);
 }
@@ -31,9 +32,28 @@ export function ChatSidebar({
   const [draft, setDraft] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // build catalog + plan context once
+  // Build catalog + plan context as before…
   const contextBlob = useMemo(() => {
-    /* … your existing catalog & plan summarization … */
+    const courseLines = catalog.map(
+      (c) =>
+        `- ${c.code}: ${c.title} (${c.credits}cr)` +
+        (c.prereqs.length ? ` prereqs: ${c.prereqs.join(", ")}` : "")
+    );
+
+    const planLines = Object.entries(assignments)
+      .map(([uid, sem]) => {
+        const course = catalog.find((c) => c.uid === uid);
+        return course ? `Sem ${sem}: ${course.code}` : null;
+      })
+      .filter(Boolean) as string[];
+
+    return `
+Course catalog:
+${courseLines.join("\n")}
+
+Current plan:
+${planLines.length ? planLines.join("\n") : "(none yet)"}
+    `.trim();
   }, [catalog, assignments]);
 
   async function sendMessage() {
