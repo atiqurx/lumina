@@ -4,7 +4,7 @@ import { Explore } from "@/components/Explore";
 export const metadata: Metadata = {
   title: "Explore Beyond",
   description:
-    "Get AI-driven recommendations for clubs, events, and co-curricular activities at Dartmouth CS",
+    "Get AI-driven recommendations for clubs, events, and co-curricular activities at UT Arlington CS",
 };
 
 export default function ExplorePage() {

@@ -15,7 +15,7 @@ import { UserButton } from "@clerk/nextjs";
 
 export default function Dashboard() {
   const [page, setPage] = useState<"chat" | "planner">("chat");
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [conversationId, setConversationId] = useState<string | null>(null);
 
   return (
@@ -71,11 +71,11 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <main className="flex flex-col flex-1 overflow-hidden">
-        <header className="flex items-center justify-between px-6 py-4 border-b bg-white">
+        {/* <header className="flex items-center justify-between px-6 py-4 border-b bg-white">
           <h1 className="text-2xl font-semibold text-gray-800">
             {page === "chat" ? "AI Academic Advisor" : "Degree Planner"}
           </h1>
-        </header>
+        </header> */}
 
         <div className="flex-1 flex overflow-hidden bg-gray-50">
           {page === "chat" ? (

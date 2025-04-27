@@ -110,7 +110,7 @@ export function AdvisorChat({
     <div className="flex flex-col h-full bg-gray-50 rounded-lg shadow-lg">
       {/* Header */}
       <div className="bg-orange-400 text-white p-4 rounded-t-lg">
-        <h2 className="text-xl font-semibold"> Advisor Chat</h2>
+        <h2 className="text-xl font-semibold">AI Academic Advisor</h2>
       </div>
 
       {/* Messages */}
@@ -119,10 +119,28 @@ export function AdvisorChat({
         className="flex-1 overflow-auto p-4 space-y-4"
       >
         {history.length === 0 && !isLoading && (
-          <div className="flex items-center justify-center h-full text-gray-500">
-            <p className="text-center">
-              Start a conversation with your advisor
-            </p>
+          <div className="flex items-center justify-center h-full p-8 text-gray-700">
+            <div className="max-w-lg text-center space-y-4">
+              <h1 className="text-2xl font-semibold">
+                Hi, I’m your AI Academic Advisor.
+              </h1>
+              <p className="text-gray-500">
+                Here are some example questions that I can help you with:
+              </p>
+              <ul className="list-disc list-inside text-left space-y-1 text-gray-600">
+                <li>
+                  What classes should a first-year computer science major take?
+                </li>
+                <li>
+                  How can I enroll in classes I don't have prereqs for if I plan
+                  to take the prereqs over the summer?
+                </li>
+                <li>
+                  I wanna go into Cyber Security what courses do you recommend?
+                </li>
+                <li>What are the prerequisites for CSE 4380?</li>
+              </ul>
+            </div>
           </div>
         )}
 

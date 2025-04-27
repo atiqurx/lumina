@@ -14,8 +14,7 @@ export default function HomePage() {
         </h1>
         <p className="text-lg text-gray-700 mb-8 max-w-xl">
           Instantly get personalized course recommendations, prerequisites
-          guidance, and study tips tailored to Dartmouth's computer science
-          curriculum.
+          guidance, and study tips tailored to your curriculum.
         </p>
         <Link href="/dashboard">
           <button className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
@@ -30,8 +29,8 @@ export default function HomePage() {
           <div>
             <h3 className="text-2xl font-semibold mb-2">Course Lookup</h3>
             <p className="text-gray-600">
-              Quickly search any COSC course and learn its description, credits,
-              and term offerings.
+              Quickly search any course and learn its description, credits, and
+              term offerings.
             </p>
           </div>
           <div>

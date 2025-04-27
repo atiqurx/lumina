@@ -49,8 +49,10 @@ export async function POST(req: Request) {
     // 4) Build your Gemini prompt
     const excerpt = JSON.stringify(courses.slice(0, 100), null, 2);
     const prompt = `
-You are a friendly academic advisor for Dartmouth CS students. Use this catalog excerpt to answer concisely:
+You are a friendly expert academic advisor for UT Arlington students. Use this catalog excerpt to answer concisely:
 ${excerpt}
+
+**VERY IMPORTANT**: Always provide relevant and to the point answers.
 
 Student: "${question}"
 Advisor:

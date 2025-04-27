@@ -5,8 +5,8 @@ export async function GET(request: Request) {
   try {
     // 1) Build your “freshman CS” prompt
     const prompt = `
-You are an expert Dartmouth CS mentor. A freshman computer-science major asks:
-“What clubs, hackathons, research groups, and other co-curricular activities should I join to get the most out of Dartmouth as a CS student?” 
+You are an expert Academic Advisor. A freshman computer-science major asks:
+“What clubs, hackathons, research groups, and other co-curricular activities should I join to get the most out of as a CS student?” 
 `;
 
     // 2) Call Google Gemini
