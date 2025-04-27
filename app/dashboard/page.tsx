@@ -29,7 +29,7 @@ export default function Dashboard() {
         {/* Logo & Toggle */}
         <div className="flex items-center justify-between h-16 px-4">
           {!collapsed && (
-            <h2 className="text-xl font-bold text-[#00693E]">Lumina</h2>
+            <h2 className="text-xl font-bold text-black">Lumina</h2>
           )}
           <button
             className="p-1 rounded hover:bg-gray-200"
@@ -73,7 +73,7 @@ export default function Dashboard() {
       <main className="flex flex-col flex-1 overflow-hidden">
         <header className="flex items-center justify-between px-6 py-4 border-b bg-white">
           <h1 className="text-2xl font-semibold text-gray-800">
-            {page === "chat" ? "AI Chatbot" : "Degree Planner"}
+            {page === "chat" ? "AI Academic Advisor" : "Degree Planner"}
           </h1>
         </header>
 

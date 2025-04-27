@@ -1,12 +1,12 @@
 // app/api/chat/route.ts
-export const auth = false;       // skip Clerk
-export const runtime = 'nodejs'; // allow mongoose, fetch, etc.
+export const auth = false; // skip Clerk
+export const runtime = "nodejs"; // allow mongoose, fetch, etc.
 
-import { NextResponse } from 'next/server';
-import connect from '@/lib/mongodb';
-import ChatHistory from '@/lib/models/ChatHistory';
-import Conversation from '@/lib/models/Conversation';
-import courses from '@/data/dartmouth_courses.json';
+import { NextResponse } from "next/server";
+import connect from "@/lib/mongodb";
+import ChatHistory from "@/lib/models/ChatHistory";
+import Conversation from "@/lib/models/Conversation";
+import courses from "@/catalog.json";
 
 export async function POST(req: Request) {
   try {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     if (!userId || !question) {
       return NextResponse.json(
-        { error: 'Missing userId or question' },
+        { error: "Missing userId or question" },
         { status: 400 }
       );
     }
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       convo = await Conversation.findById(conversationId);
       if (!convo) {
         return NextResponse.json(
-          { error: 'Invalid conversationId' },
+          { error: "Invalid conversationId" },
           { status: 400 }
         );
       }
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     }
 
     // 3) Append the user’s question
-    convo.history.push({ role: 'user', message: question });
+    convo.history.push({ role: "user", message: question });
     await convo.save();
 
     // 4) Build your Gemini prompt
@@ -61,8 +61,8 @@ Advisor:
     const geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
       {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
         }),
@@ -71,7 +71,7 @@ Advisor:
 
     if (!geminiRes.ok) {
       const errText = await geminiRes.text();
-      console.error('Gemini error', geminiRes.status, errText);
+      console.error("Gemini error", geminiRes.status, errText);
       throw new Error(`Gemini failed ${geminiRes.status}`);
     }
 
@@ -81,7 +81,7 @@ Advisor:
       "I'm sorry, I don't know.";
 
     // 6) Append the bot’s answer
-    convo.history.push({ role: 'bot', message: answer });
+    convo.history.push({ role: "bot", message: answer });
     await convo.save();
 
     // 7) Return the answer and conversationId
@@ -90,9 +90,9 @@ Advisor:
       conversationId: convo._id.toString(),
     });
   } catch (err: any) {
-    console.error('🚨 /api/chat error:', err);
+    console.error("🚨 /api/chat error:", err);
     return NextResponse.json(
-      { error: err.message || 'Internal server error' },
+      { error: err.message || "Internal server error" },
       { status: 500 }
     );
   }
