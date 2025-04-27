@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
+import { Bot, Send, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
 type Message = { role: "system" | "user" | "assistant"; content: string };
 
@@ -12,7 +13,6 @@ export interface CourseWithUid {
   prereqs: string[];
 }
 
-// Detect "professor X" or "prof X" or "Dr. X"
 function isProfessorQuery(text: string) {
   return /\b(?:professor|prof|dr\.)\s+([A-Za-z]+\s?[A-Za-z]*)/i.test(text);
 }
@@ -28,18 +28,18 @@ export function ChatSidebar({
   catalog: CourseWithUid[];
   assignments: Record<string, number>;
 }) {
+  const [collapsed, setCollapsed] = useState(true); // default collapsed
   const [messages, setMessages] = useState<Message[]>([]);
   const [draft, setDraft] = useState("");
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Build catalog + plan context as before…
   const contextBlob = useMemo(() => {
     const courseLines = catalog.map(
       (c) =>
         `- ${c.code}: ${c.title} (${c.credits}cr)` +
         (c.prereqs.length ? ` prereqs: ${c.prereqs.join(", ")}` : "")
     );
-
     const planLines = Object.entries(assignments)
       .map(([uid, sem]) => {
         const course = catalog.find((c) => c.uid === uid);
@@ -56,6 +56,19 @@ ${planLines.length ? planLines.join("\n") : "(none yet)"}
     `.trim();
   }, [catalog, assignments]);
 
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Handle Enter key to send message
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   async function sendMessage() {
     if (!draft.trim()) return;
     const text = draft.trim();
@@ -64,7 +77,7 @@ ${planLines.length ? planLines.join("\n") : "(none yet)"}
     setDraft("");
     setLoading(true);
 
-    // ➊ Professor path
+    // Professor lookup
     if (isProfessorQuery(text)) {
       const profName = extractProfessorName(text);
       try {
@@ -102,21 +115,18 @@ ${planLines.length ? planLines.join("\n") : "(none yet)"}
       return;
     }
 
-    // Otherwise: regular AI-advisor flow
+    // Academic-advice flow
     const systemPrompt: Message = {
       role: "system",
       content: `
-        You are an expert academic advisor. Base your advice on the
-        course catalog and the student’s current plan provided below.
-        Please keep every answer under two sentences—short, concise, and to the point.
+You are an expert academic advisor. Base your advice on the
+course catalog and the student's current plan provided below.
+Please keep every answer under two sentences—short, concise, and to the point.
 
-        ${contextBlob}
+${contextBlob}
       `.trim(),
     };
-
-    const payload = {
-      messages: [systemPrompt, ...messages, userMsg] as Message[],
-    };
+    const payload = { messages: [systemPrompt, ...messages, userMsg] };
 
     try {
       const res = await fetch("/api/assistant", {
@@ -144,41 +154,132 @@ ${planLines.length ? planLines.join("\n") : "(none yet)"}
   }
 
   return (
-    <div className="flex flex-col h-full bg-white">
-      <header className="p-4 border-b">
-        <h2 className="text-lg font-medium">AI Academic Advisor</h2>
-      </header>
-      <div className="flex-1 p-4 overflow-y-auto space-y-3">
-        {messages.map((m, i) => (
-          <div
-            key={i}
-            className={`p-2 rounded max-w-[80%] ${
-              m.role === "user"
-                ? "bg-[#FFEBE7] text-[#D03A16] self-end"
-                : "bg-gray-100 text-gray-800 self-start"
-            }`}
-          >
-            {m.content}
-          </div>
-        ))}
-        {loading && <div className="text-sm text-gray-500">Typing…</div>}
-      </div>
-      <div className="p-4 border-t">
-        <textarea
-          rows={2}
-          className="w-full p-2 border rounded resize-none focus:outline-none"
-          placeholder="Ask about your degree plan…"
-          value={draft}
-          onChange={(e) => setDraft(e.target.value)}
-        />
+    <div
+      className={`
+        flex flex-col h-full bg-white border-l border-gray-200
+        transition-all duration-300 ease-in-out shadow-md
+        ${collapsed ? "w-16" : "w-80"}
+      `}
+    >
+      {/* Header */}
+      <header
+        className={`
+        flex items-center p-3 border-b border-gray-200
+     
+      `}
+      >
+        <div className="flex items-center">
+          {!collapsed && (
+            <div className="flex items-center gap-2">
+              <h2 className="text-base font-medium text-gray-800">
+                AI Advisor
+              </h2>
+            </div>
+          )}
+        </div>
+
         <button
-          className="mt-2 w-full py-2 bg-[#FF7D3B] text-white rounded hover:bg-[#e66c29]"
-          onClick={sendMessage}
-          disabled={loading}
+          onClick={() => setCollapsed((c) => !c)}
+          className="ml-auto p-1 hover:bg-gray-100 rounded-full transition-colors"
+          title={collapsed ? "Open AI Assistant" : "Close AI Assistant"}
         >
-          Send
+          <Bot className="w-6 h-6 text-[#FF7D3B]" />
         </button>
-      </div>
+      </header>
+
+      {!collapsed && (
+        <>
+          {/* Messages Container */}
+          <div className="flex-1 p-3 overflow-y-auto bg-[#FAFAFA]">
+            {messages.length === 0 ? (
+              <div className="h-full flex flex-col items-center justify-center text-center p-4">
+                <Bot className="w-12 h-12 text-[#FFB38A] mb-3 opacity-50" />
+                <p className="text-sm text-gray-500">
+                  I'm your AI academic advisor. Ask me about courses,
+                  prerequisites, professors or your degree plan.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {messages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`flex ${
+                      msg.role === "user" ? "justify-end" : "justify-start"
+                    }`}
+                  >
+                    <div
+                      className={`
+                        p-3 rounded-lg max-w-[85%] shadow-sm
+                        ${
+                          msg.role === "user"
+                            ? "bg-[#FF9A68] text-white"
+                            : "bg-white border border-gray-200 text-gray-800"
+                        }
+                      `}
+                    >
+                      <p className="text-sm whitespace-pre-wrap">
+                        {msg.content}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {loading && (
+                  <div className="flex justify-start">
+                    <div className="bg-white border border-gray-200 p-3 rounded-lg shadow-sm flex items-center">
+                      <Loader2 className="w-4 h-4 text-[#FF7D3B] animate-spin mr-2" />
+                      <span className="text-sm text-gray-500">Thinking...</span>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            )}
+          </div>
+
+          {/* Input Area */}
+          <div className="p-3 border-t border-gray-200 bg-white">
+            <div className="relative">
+              <textarea
+                rows={2}
+                className="w-full p-3 pr-10 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-1 focus:ring-[#FF7D3B] focus:border-[#FF7D3B] text-sm"
+                placeholder="Ask about your courses..."
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={loading}
+              />
+              <button
+                className={`
+                  absolute right-2 bottom-3 p-2 rounded-full
+                  ${
+                    draft.trim()
+                      ? "bg-[#FF7D3B] text-white hover:bg-[#E05F1A]"
+                      : "bg-gray-100 text-gray-400"
+                  }
+                  transition-colors
+                `}
+                onClick={sendMessage}
+                disabled={loading || !draft.trim()}
+                aria-label="Send message"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </div>
+
+            {messages.length > 0 && (
+              <div className="mt-2 flex justify-end">
+                <button
+                  onClick={() => setMessages([])}
+                  className="text-xs text-gray-500 hover:text-[#FF7D3B]"
+                >
+                  Clear conversation
+                </button>
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

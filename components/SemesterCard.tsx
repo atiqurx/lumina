@@ -53,7 +53,7 @@ export function SemesterCard({
     <div
       ref={setNodeRef}
       className={`
-        relative flex flex-col h-full
+        relative flex flex-col min-h-[12rem] h-full
         ${semesterLocked ? "opacity-90" : ""}
         ${isOver && !semesterLocked ? "ring-2 ring-[#FF7D3B]" : ""}
       `}
@@ -62,7 +62,7 @@ export function SemesterCard({
       <div
         className={`
           p-3 rounded-t-lg flex justify-between items-center
-          ${semesterLocked ? "bg-gray-100" : "bg-[#FFF0E8]"}
+          ${semesterLocked ? "bg-gray-300" : "bg-[#94B4C1]/20"}
           ${hasWarnings ? "border-b-2 border-[#FFCDB2]" : ""}
         `}
       >
@@ -71,7 +71,7 @@ export function SemesterCard({
             <h2 className="font-medium text-gray-800">{label}</h2>
             <button
               onClick={onToggleSemesterLock}
-              className="p-1 hover:bg-[#FFE8D9] rounded-full transition-colors"
+              className="p-1 hover:bg-[#94B4C1]/40 rounded-full transition-colors"
               title={semesterLocked ? "Unlock semester" : "Lock semester"}
             >
               {semesterLocked ? (
@@ -81,11 +81,9 @@ export function SemesterCard({
               )}
             </button>
           </div>
-          <div className="text-xs text-gray-500">Semester {semester}</div>
-        </div>
-
-        <span
-          className={`
+          {/* <div className="text-xs text-gray-500">Semester {semester}</div> */}
+          <span
+            className={`
             text-xs font-medium px-2 py-1 rounded-full
             ${
               creditStatus === "optimal"
@@ -95,9 +93,10 @@ export function SemesterCard({
                 : "bg-[#FFEBE7] text-[#D03A16]"
             }
           `}
-        >
-          {totalCredits} credits
-        </span>
+          >
+            {totalCredits} credits
+          </span>
+        </div>
       </div>
 
       {/* Course list... unchanged */}
