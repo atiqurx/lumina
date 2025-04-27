@@ -1,78 +1,98 @@
-export const runtime = 'nodejs';
+// app/api/chat/route.ts
+export const auth = false;       // skip Clerk
+export const runtime = 'nodejs'; // allow mongoose, fetch, etc.
 
-import { NextResponse } from "next/server";
-import courses from "@data/dartmouth_courses.json";
+import { NextResponse } from 'next/server';
 import connect from '@/lib/mongodb';
 import ChatHistory from '@/lib/models/ChatHistory';
 import Conversation from '@/lib/models/Conversation';
+import courses from '@/data/dartmouth_courses.json';
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    // 1) Parse input (expect question and userId)
-    const { question, userId } = await request.json();
-    if (!question || !userId) {
-      return NextResponse.json({ answer: "Missing question or userId" }, { status: 400 });
+    await connect();
+    const { userId, question, conversationId } = await req.json();
+
+    if (!userId || !question) {
+      return NextResponse.json(
+        { error: 'Missing userId or question' },
+        { status: 400 }
+      );
     }
 
-    // 2) Build catalog context for Gemini
-    const context = JSON.stringify(courses.slice(0, 100), null, 2);
-    const promptText = `
-You are a friendly academic advisor for University of Texas at Arlington CS students. Use this catalog excerpt to answer concisely:
-${context}
+    // 1) Ensure there’s a ChatHistory for this user
+    let hist = await ChatHistory.findOne({ user: userId });
+    if (!hist) {
+      hist = await ChatHistory.create({ user: userId, convos: [] });
+    }
+
+    // 2) Get or create the Conversation doc
+    let convo;
+    if (conversationId) {
+      convo = await Conversation.findById(conversationId);
+      if (!convo) {
+        return NextResponse.json(
+          { error: 'Invalid conversationId' },
+          { status: 400 }
+        );
+      }
+    } else {
+      convo = await Conversation.create({ history: [] });
+      hist.convos.push(convo._id);
+      await hist.save();
+    }
+
+    // 3) Append the user’s question
+    convo.history.push({ role: 'user', message: question });
+    await convo.save();
+
+    // 4) Build your Gemini prompt
+    const excerpt = JSON.stringify(courses.slice(0, 100), null, 2);
+    const prompt = `
+You are a friendly academic advisor for Dartmouth CS students. Use this catalog excerpt to answer concisely:
+${excerpt}
 
 Student: "${question}"
 Advisor:
 `;
 
-    // 3) Call Gemini 2.0 Flash
+    // 5) Call Gemini Flash
     const apiKey = process.env.GOOGLE_API_KEY!;
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-    const resp = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: promptText }] }]
-      }),
-    });
+    const geminiRes = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+        }),
+      }
+    );
 
-    if (!resp.ok) {
-      const errBody = await resp.text();
-      console.error("Gemini error:", resp.status, errBody);
-      return NextResponse.json(
-        { answer: `Gemini error ${resp.status}. Check server logs.` },
-        { status: 500 }
-      );
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
+      console.error('Gemini error', geminiRes.status, errText);
+      throw new Error(`Gemini failed ${geminiRes.status}`);
     }
 
-    // 4) Parse the JSON response
-    const payload = await resp.json();
+    const geminiJson = await geminiRes.json();
     const answer =
-      payload.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
-      "I’m sorry, I don’t know.";
+      geminiJson.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
+      "I'm sorry, I don't know.";
 
-    // 5) Persist to MongoDB
-    await connect();
-    // find or create chat history for this user
-    let hist = await ChatHistory.findOne({ user: userId });
-    if (!hist) {
-      hist = await ChatHistory.create({ user: userId, convos: [] });
-    }
-    // create a conversation document
-    const convo = await Conversation.create({
-      history: [
-        { role: 'user', message: question },
-        { role: 'bot', message: answer }
-      ]
+    // 6) Append the bot’s answer
+    convo.history.push({ role: 'bot', message: answer });
+    await convo.save();
+
+    // 7) Return the answer and conversationId
+    return NextResponse.json({
+      answer,
+      conversationId: convo._id.toString(),
     });
-    hist.convos.push(convo._id);
-    await hist.save();
-
-    // 6) Return the answer
-    return NextResponse.json({ answer });
-  } catch (err) {
-    console.error("🚨 /api/chat error:", err);
+  } catch (err: any) {
+    console.error('🚨 /api/chat error:', err);
     return NextResponse.json(
-      { answer: "Oops—something went wrong. Check server logs." },
+      { error: err.message || 'Internal server error' },
       { status: 500 }
     );
   }
