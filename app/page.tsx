@@ -1,10 +1,12 @@
 // app/page.tsx
 
+import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <main className="flex flex-col min-h-screen bg-gray-50">
+      <Navbar />
       {/* Hero Section */}
       <section className="flex-grow flex flex-col justify-center items-center px-4 text-center">
         <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
