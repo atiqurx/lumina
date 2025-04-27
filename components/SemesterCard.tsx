@@ -30,16 +30,14 @@ export function SemesterCard({
     disabled: semesterLocked,
   });
 
-  // 🚀 new: hard-coded start year
+  // hard-coded start year
   const START_YEAR = 2022;
   const TERM_NAMES = ["Fall", "Spring", "Summer"];
-
-  // zero-based index
   const idx = semester - 1;
   const term = TERM_NAMES[idx % 3];
-  const year = START_YEAR + Math.floor(idx / 3);
-
-  const label = `${term} ${year}`; // e.g. "Fall 2022"
+  // ⚡️ bump year for Spring/Summer and the next Fall
+  const year = START_YEAR + Math.floor((idx + 2) / 3);
+  const label = `${term} ${year}`;
 
   const totalCredits = courses.reduce((sum, c) => sum + c.credits, 0);
   const hasWarnings = courses.some((c) => missingPrereqsMap[c.uid]?.length > 0);

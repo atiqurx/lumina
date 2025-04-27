@@ -84,7 +84,7 @@ export default function DegreePlannerPage() {
   }, [assignments]);
 
   const unassigned = ALL_COURSES.filter((c) => !(c.uid in assignments));
-  const semesters = Array.from({ length: 15 }, (_, i) => i + 1);
+  const semesters = Array.from({ length: 12 }, (_, i) => i + 1);
   const activeCourse = activeId
     ? ALL_COURSES.find((c) => c.uid === activeId)
     : null;
