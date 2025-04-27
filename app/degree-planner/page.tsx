@@ -24,7 +24,7 @@ const ALL_COURSES = (catalog as Course[]).map((c, i) => ({
   uid: `${c.code}-${i}`,
 })) as CourseWithUid[];
 
-export default function DashboardPage() {
+export default function DegreePlannerPage() {
   const [assignments, setAssignments] = useState<Record<string, number>>({});
   const [semesterLocks, setSemesterLocks] = useState<Record<number, boolean>>(
     {}
