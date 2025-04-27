@@ -24,11 +24,11 @@ export default function DashboardPage() {
       </aside>
 
       {/* Chat Column */}
-      <main className="flex-1 flex flex-col">
-        <header className="p-4 border-b">
+      <main className="flex-1 flex flex-col h-screen overflow-hidden">
+        {/* <header className="p-4 border-b">
           <h1 className="text-2xl font-bold">AI Academic Advisor</h1>
-        </header>
-        <div className="flex-1">
+        </header> */}
+        <div className="flex-1 min-h-0">
           <AdvisorChat conversationId={conversationId} />
         </div>
       </main>
